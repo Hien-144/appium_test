@@ -1,4 +1,6 @@
 package tutorial_appium;
+//khởi tạo đối tượng thông tin đặt hàng 
+//verify thông tin khách hàng đặt hàng
 
 public class BookRoomTwo {
 	private String nameHotel;

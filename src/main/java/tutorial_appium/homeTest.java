@@ -1,5 +1,6 @@
 package tutorial_appium;
-//thực thi testcase trang chủ
+//thực thi testcase  search
+////Verify button search
 import org.openqa.selenium.WebElement;
 import org.opentest4j.AssertionFailedError;
 
@@ -63,51 +64,6 @@ public class homeTest extends Common{
 				test = false;
 			}
 		}
-		
-//		for(int i = 1; i <= 3; i++) {
-//			if (this.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[" + i + "]"))) {
-//				if (this.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[" + i + "]/android.widget.TextView"))) {
-//					WebElement test1 = this.driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[" + i + "]/android.widget.TextView"));
-//					String actualMessage = test1.getText();
-//					if (actualMessage.contains(keySearch.getKeySearch())) {					
-//						test1.click();
-//						Thread.sleep(5000);
-//						String resText = "";
-//						WebElement res = null;
-//						if (this.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView"))) {
-//							res = this.driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView"));
-//						} else if (this.isElementPresent(By.id("com.tripadvisor.tripadvisor:id/txtGlobalNavTitle"))) {
-//							System.out.println("ccc111");
-//							res = this.driver.findElement(By.id("com.tripadvisor.tripadvisor:id/txtGlobalNavTitle"));
-//						}
-//						System.out.println(resText);
-//						resText = res.getText();
-//						System.out.println(resText + "cccccc");
-//						if (resText.contains(keySearch.getExpect())) {
-//							test = true;
-//						}
-//					} else {
-//					}
-//				} else if (this.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[" + i + "]/android.widget.TextView[1]"))) {
-//					WebElement test1 = this.driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[" + i + "]/android.widget.TextView[1]"));
-//					String actualMessage = test1.getText();
-//					System.out.println("cccc1");
-//					if (actualMessage.contains(keySearch.getKeySearch())) {						
-//						test1.click();
-//						Thread.sleep(5000);
-//						System.out.println("cccc2");
-//						if (this.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView"))) {
-//							WebElement res = this.driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView"));
-//							String resText = res.getText();
-//							System.out.println(resText);
-//							if (resText.equalsIgnoreCase(keySearch.getExpect())) {
-//								test = true;
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
 		try {
 			Assertions.assertTrue(test);
 			WebElement  backBtn = this.driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Quay lại\"]/android.widget.ImageView"));
@@ -120,10 +76,9 @@ public class homeTest extends Common{
 			WebElement  backBtn = this.driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Quay lại\"]/android.widget.ImageView"));
 			backBtn.click();
 			return false;
-		}		
+		}	
 	}
 	
-
 	
 
 }

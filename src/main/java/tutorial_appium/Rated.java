@@ -1,5 +1,6 @@
 package tutorial_appium;
-
+//khởi tạo đối tượng đánh giá 
+// verify đánh giá
 public class Rated {
 	private String vote;
 	private String type;

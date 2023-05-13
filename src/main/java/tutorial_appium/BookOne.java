@@ -1,5 +1,6 @@
 package tutorial_appium;
-//khởi chạy
+//khởi chạy ngày đặt phòng và chọn số người
+//verify ngày đặt phòng
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class BookOne {
 //		for (int i=0; i < readBook.size() ; i++) {
 //			System.out.println(readBook.get(i).getFrom()+ readBook.get(i).getMonthFrom() + readBook.get(i).getTo() + readBook.get(i).getMonthTo());
 //		}
-		System.out.println("cccccccccc");
+		System.out.println("Finish");
 		
 	}
 	
@@ -59,6 +60,7 @@ public class BookOne {
 		for (int i = 0; i < readBooks.size() ; i++) {
 			boolean res = brot.homeBook(readBooks.get(i), check);
 			if (check) {
+				System.out.println("Result : " + i + " " + res);
 				if (res) {
 					ft.write(i + 17, 7, "Pass");
 				} else {
@@ -67,7 +69,7 @@ public class BookOne {
 				brot.scrollBack("5", cmn);
 			}
 			Thread.sleep(500);
-		}		
+		}	
 	}
 	
 	public static void runPeole(ArrayList<BookPeopleOne> bookPeopleOnes) throws InterruptedException, MalformedURLException  {
@@ -98,12 +100,13 @@ public class BookOne {
 				WebElement btnAdd = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.widget.ImageView"));
 				if (!bookPeopleOnes.get(i).getExpectDisable()) {
 					try {
+						System.out.println("Result : " + i + " " + !btnSub.isEnabled());
 						Assertions.assertFalse(btnSub.isEnabled());
 						ft.write(i + 22, 7, "Pass");
 					} catch (AssertionFailedError e) {
 						// TODO: handle exception
 						e.printStackTrace();
-						ft.write(i + 22, 7, "Faildffff");
+						ft.write(i + 22, 7, "Faild");
 						continue;
 					}
 				} else {
@@ -111,6 +114,7 @@ public class BookOne {
 					String actual = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[2]\n"
 							+ "")).getText();
 					try {
+						System.out.println("Result : " + i + " " + bookPeopleOnes.get(i).getExpect().contains(actual));
 						Assertions.assertTrue(bookPeopleOnes.get(i).getExpect().contains(actual));
 						ft.write(i + 22, 7, "Pass");
 					} catch (AssertionFailedError e) {
@@ -127,6 +131,7 @@ public class BookOne {
 				}
 				if (!bookPeopleOnes.get(i).getExpectDisable()) {
 					try {
+						System.out.println("Result : " + i + " " + !btnSub.isEnabled());
 						Assertions.assertFalse(btnSub.isEnabled());
 						ft.write(i + 22, 7, "Pass");
 					} catch (AssertionFailedError e) {
@@ -137,11 +142,11 @@ public class BookOne {
 				} else {
 					String actual = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.TextView[2]")).getText();
 					if (Integer.parseInt(actual) <= 1) {
-						System.out.println("peoplepeople");
 						btnAdd.click();
 					}
 					actual = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.TextView[2]")).getText();
 					try {
+						System.out.println("Result : " + i + " " + bookPeopleOnes.get(i).getExpect().contains(actual));
 						Assertions.assertTrue(bookPeopleOnes.get(i).getExpect().contains(actual));
 						ft.write(i + 22, 7, "Pass");
 					} catch (AssertionFailedError e) {
@@ -155,6 +160,7 @@ public class BookOne {
 				WebElement btnAdd = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.widget.ImageView"));
 				if (!bookPeopleOnes.get(i).getExpectDisable()) {
 					try {
+						System.out.println("Result : " + i + " " + !btnSub.isEnabled());
 						Assertions.assertFalse(btnSub.isEnabled());
 						ft.write(i + 22, 7, "Pass");
 					} catch (AssertionFailedError e) {
@@ -166,6 +172,7 @@ public class BookOne {
 					btnAdd.click();
 					String actual = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.TextView[2]")).getText();
 					try {
+						System.out.println("Result : " + i + " " + bookPeopleOnes.get(i).getExpect().contains(actual));
 						Assertions.assertTrue(bookPeopleOnes.get(i).getExpect().contains(actual));
 						ft.write(i + 22, 7, "Pass");
 					} catch (AssertionFailedError e) {
@@ -180,7 +187,6 @@ public class BookOne {
 	
 	public static void reSet() throws MalformedURLException, InterruptedException {
 		BookRoomOne broreset = ft.readLine(29);
-		System.out.println(broreset.getExpect());
 		
 		andDriver = Connection.getConnectionMainAndroid();
 		Common cmn = new Common(andDriver);
@@ -210,11 +216,13 @@ public class BookOne {
 		String actual;
 		actual = text.getText();
 		try {
+			System.out.println("Result reset : " + actual.equalsIgnoreCase(broreset.getExpect()));
 			Assertions.assertTrue(actual.equalsIgnoreCase(broreset.getExpect()));
 			ft.write(29, 7, "Pass");
-		} catch (junit.framework.AssertionFailedError e) {
+		} catch (AssertionFailedError e) {
 			// TODO: handle exception
 			ft.write(29, 7, "Faild");
+			return;
 		}
 	}
 
@@ -237,11 +245,11 @@ public class BookOne {
 		WebElement check1 = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"));
 		String actual = check1.getText();
 		
-		System.out.println(actual + " " + bookRoomOne.getExpect());
 		try {
+			System.out.println("Result apply : " + bookRoomOne.getExpect().contains(actual));
 			Assertions.assertTrue(bookRoomOne.getExpect().contains(actual));
 			ft.write(30, 7, "Pass");
-		} catch (Exception e) {
+		} catch (AssertionFailedError e) {
 			ft.write(30, 7, "Faild");
 			// TODO: handle exception
 		}

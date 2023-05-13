@@ -1,5 +1,6 @@
 package tutorial_appium;
-//thực thithi
+//thực thi 
+//verify ngày đặt phòng
 
 import java.awt.Point;
 import java.time.Duration;
@@ -69,7 +70,6 @@ public class BookRoomOneTest {
 					}
 				} else {
 					WebElement result = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/txtStartInputText"));
-					System.out.println(result.getText() + bookRoomOne.getExpect());
 					String actual = result.getText();
 					boolean res = actual.equalsIgnoreCase(bookRoomOne.getExpect());
 					try {

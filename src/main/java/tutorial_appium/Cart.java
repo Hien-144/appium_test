@@ -1,5 +1,6 @@
 	package tutorial_appium;
-
+//khởi tạo đối tượng login trang booking.com
+	//verify giỏ hàng
 public class Cart {
 	private String mail;
 	private String passw;

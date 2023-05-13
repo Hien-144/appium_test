@@ -1,5 +1,5 @@
 package tutorial_appium;
-//kết nối đt
+//kết nối đt với úng dụng 
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -17,14 +17,14 @@ public class Connection {
 		System.out.println("getConnection");
 	}
 
-	public static WebDriver getConnectionMain () throws MalformedURLException {
+	public static WebDriver getConnectionMain () throws MalformedURLException, InterruptedException {
 		if (driverMain != null) {
 			return driverMain;
 		}
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		DesiredCapabilities cc = getDesiredCapabilities("com.tripadvisor.android.ui.primarynavcontainer.MainActivity");
 		driverMain = new AndroidDriver(url, cc);
-		
+		driverMain.wait(5000);
 		return driverMain;
 	}
 	
@@ -35,7 +35,7 @@ public class Connection {
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		DesiredCapabilities cc = getDesiredCapabilities("com.tripadvisor.android.ui.primarynavcontainer.MainActivity");
 		andDriverMain = new AndroidDriver(url, cc);
-		
+//		andDriverMain.manage().wait(5000).timeouts();
 		return andDriverMain;
 	}
 

@@ -1,5 +1,5 @@
 package tutorial_appium;
-//class để khởi tạo đối tượng người dùng
+//class để khởi tạo đối tượng logic 
 public class UserLogin {
 	//khai báo thuộc tính
 	private String username;

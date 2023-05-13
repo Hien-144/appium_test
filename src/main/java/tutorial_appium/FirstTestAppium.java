@@ -1,5 +1,6 @@
 package tutorial_appium;
-//khởi chạy trang chủ
+//khởi chạy search 
+//Verify button search khi chọn tìm kiếm qua nút khách sạn
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -50,58 +51,23 @@ public class FirstTestAppium{
 		Thread.sleep(1000);
 		for (int i = 0; i < keySearchs.size();i++) {
 			boolean test = false;
-				System.out.println(keySearchs.get(i).getKeySearch() + " " + keySearchs.get(i).getExpect());
-			if (i > 6) {					
-				 test = a.home2(keySearchs.get(i));	
-			} 
-			else {					
+			if (i <=6) {
+				if (i == 6) {					
+					test = a.home2(keySearchs.get(i));	
+				} 
+				else if(i < 6) {					
 					test = a.home1(keySearchs.get(i));	
+				}
+				System.out.println("result : " + i + " " + test);
+				if (test) {
+					String result = "Pass";
+					ft.write(i + 9, 7, result);				
+				} else {
+					String result = "Faild";
+					ft.write(i + 9, 7, result);
+				}
 			}
-			
-			System.out.println("result : " + i + " " + test);
-			if (test) {
-				String result = "Pass";
-				ft.write(i + 9, 7, result);				
-			} else {
-				String result = "Faild";
-				ft.write(i + 9, 7, result);
-			}
-		}	
-//		a.home2();
-		
-//A1		Button Bo qua
-		
-//		WebElement boqua = driver.findElement(By.id("com.tripadvisor.tripadvisor:id/bdlBtnSkip"));
-//		boqua.click();
-//		
-//		WebElement desau = driver.findElement(By.id("com.tripadvisor.tripadvisor:id/bdlBtnNotNow"));
-//		desau.click();
-		
-//B tu choi sau khi k cho truy cap vi tri		
-//		WebElement tuchoitruycap = driver.findElement(ByXPath.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup"));
-//		tuchoitruycap.click();
-// button cho phep du lieu dia diem
-		
-//		WebElement RequestLocationPermission = driver.findElement(By.id("com.tripadvisor.tripadvisor:id/btnRequestLocationPermission"));
-//		RequestLocationPermission.click();
-		
-// tu choi truy cap vi tri 
-//		WebElement tuchoi1 = driver.findElement(By.id("com.android.permissioncontroller:id/permission_deny_button"));
-//		tuchoi1.click();
-		
-//A button de sau sau khi dang ky case dung
-		
-//		WebElement desau1 = driver.findElement(By.id("com.tripadvisor.tripadvisor:id/bdlBtnNotNow"));
-//		desau1.click();
-
-	
-		
-		System.out.println("Application started ... bip bip bip : ");
-//		driver.quit();
-		
+		}
+		System.out.println("Finish");
 	}
 }
-
-
-//com.tripadvisor.tripadvisor:id/txtDescription  Vui lòng kiểm tra email và mật khẩu rồi thử lại.
-

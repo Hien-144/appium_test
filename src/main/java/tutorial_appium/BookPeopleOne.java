@@ -1,5 +1,6 @@
 package tutorial_appium;
-
+//khởi tạo đối tượng chọn số lượng người
+////verify ngày đặt phòng
 public class BookPeopleOne {
 	private String room;
 	private String people;

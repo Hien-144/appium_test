@@ -1,4 +1,6 @@
 package tutorial_appium;
+//khởi chạy search 
+//Verify button search khi chọn tìm kiếm qua thanh 
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -38,8 +40,8 @@ public class HomeSearch {
 		WebElement textSearch = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/edtSearchString"));
 		textSearch.click();
 		Thread.sleep(1000);
-		
-		System.out.println(keySearchs.size());
+//		
+//		System.out.println(keySearchs.size());
 		for (int i = 0; i < keySearchs.size();i++) {
 			boolean test = false;
 			if (i > 6){					
@@ -50,15 +52,16 @@ public class HomeSearch {
 				} else {
 					test = a.home1(keySearchs.get(i));	
 				}
-				System.out.println("result : " + i + " " + test);
+				System.out.println("result : " + (i - 6) + " " + test);
 				if (test) {
 					String result = "Pass";
-					ft.write(i + 72, 7, result);				
+					ft.write(i + 73, 7, result);				
 				} else {
 					String result = "Faild";
-					ft.write(i + 72, 7, result);
+					ft.write(i + 73, 7, result);
 				}
-			}
+			}	
 		}	
+		System.out.println("Finish");
 	}
 }

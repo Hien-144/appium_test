@@ -16,6 +16,7 @@ import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.opentest4j.AssertionFailedError;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -47,7 +48,7 @@ public class AuthClass extends Common{
 			
 			String expectedResult = userLogin.getExpect();
 			boolean testB = expectedResult.equalsIgnoreCase(actualMessage);
-			System.out.print(actualMessage + " " + userLogin.getExpect());
+//			System.out.print(actualMessage + " " + userLogin.getExpect());
 			try {
 				Assertions.assertTrue(testB);
 				return true;
@@ -105,4 +106,26 @@ public class AuthClass extends Common{
 		this.driver.findElement(By.id(""));
 		
 	}
+	
+	public boolean loginSuccessSuccess(UserLogin userLogin) throws InterruptedException {
+//		WebElement signupBtn = driver.findElement(By.id("com.tripadvisor.tripadvisor:id/btnSignUp"));
+//		signupBtn.click();
+		
+		WebElement emailInput = this.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.EditText"));
+		WebElement passInput = this.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.EditText"));
+		emailInput.clear();
+		passInput.clear();
+		emailInput.sendKeys(userLogin.getUsername());
+		passInput.sendKeys(userLogin.getPassword());
+		
+		WebElement signupBtn1 = this.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnSignIn"));
+		signupBtn1.click();
+		Thread.sleep(3000);
+		if (this.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().text(\"Đăng xuất\")"))) {			
+			return true;
+		}
+		return false;
+	}
 }
+///hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.EditText
+///hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.EditText

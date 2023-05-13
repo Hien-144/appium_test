@@ -1,5 +1,5 @@
 package tutorial_appium;
-
+// class sử dụng chung
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;

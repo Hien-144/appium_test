@@ -1,5 +1,6 @@
 package tutorial_appium;
-
+//khởi tạo đối tượng chức năng book hoạt động giải trí
+//verify book hoạt động giải trí
 public class BookActivity {
 
 	private String date;

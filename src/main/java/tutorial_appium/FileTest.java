@@ -1,5 +1,5 @@
 package tutorial_appium;
-//đọc ghi dữ liệu 
+//đọc ghi dữ liệu từ file 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -100,7 +100,7 @@ public class FileTest {
 				String expect = sheet.getRow(i).getCell(6)!= null ? sheet.getRow(i).getCell(6).toString() : "";
 				keySearch.add(new KeySearch(search, expect )); //khởi tạo 1 đ	ối tượng UserLogin và thêm vào trong ds các đối tượng tài khoản người dùng
 			}
-			for (int i = 72; i <= 78; i++) {
+			for (int i = 73; i <= 79; i++) {
 //				System.out.println(sheet.getRow(i).getCell(5) + "ccc" + i);
 				String search= sheet.getRow(i).getCell(4) != null ? sheet.getRow(i).getCell(4).toString() : "";
 				String expect = sheet.getRow(i).getCell(6)!= null ? sheet.getRow(i).getCell(6).toString() : "";
@@ -383,6 +383,10 @@ public class FileTest {
 				boolean exp = expect.equalsIgnoreCase("Disable") ? false : true ;
 				readBookActivity.add(new BookActivity("", "", people, expect)); //khởi tạo 1 đ	ối tượng UserLogin và thêm vào trong ds các đối tượng tài khoản người dùng
 			}
+			String people = sheet.getRow(72).getCell(4).toString();
+			String expect = sheet.getRow(72).getCell(6).toString();
+			boolean exp = expect.equalsIgnoreCase("Disable") ? false : true ;
+			readBookActivity.add(new BookActivity("", "", people, expect));
 					
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -418,17 +422,17 @@ public class FileTest {
 			String heading= "";
 			String expect ="";
 	
-			for (int i = 80; i <= 93; i++) {	
-				if (i <= 85) {
+			for (int i = 81; i <= 94; i++) {	
+				if (i <= 86) {
 					vote= sheet.getRow(i).getCell(4)!= null ? sheet.getRow(i).getCell(4).toString() : "";
 //					System.out.println("firstname "+ i + " " + firstName);
-				} else if (i <= 87) {
+				} else if (i <= 88) {
 					type = sheet.getRow(i).getCell(4)!= null ? sheet.getRow(i).getCell(4).toString() : "";
 //					System.out.println("firstname "+ i + " " + name);					
-				}else if (i <= 90) {
+				}else if (i <= 91) {
 					rated = sheet.getRow(i).getCell(4)!= null ? sheet.getRow(i).getCell(4).toString() : "";
 //					System.out.println("firstname "+ i + " " + name);					
-				} else if (i <= 93){
+				} else if (i <= 94){
 					heading= sheet.getRow(i).getCell(4)!= null ? sheet.getRow(i).getCell(4).toString() : "";
 				}
 				expect = sheet.getRow(i).getCell(6)!= null ? sheet.getRow(i).getCell(6).toString() : "";

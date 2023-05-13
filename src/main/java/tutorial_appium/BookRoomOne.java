@@ -1,4 +1,6 @@
 package tutorial_appium;
+// khởi tạo đối tượng chọn từ ngày đến ngày
+////verify ngày đặt phòng
 
 public class BookRoomOne {
 	private String from;

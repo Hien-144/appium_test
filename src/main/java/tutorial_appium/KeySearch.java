@@ -1,6 +1,6 @@
 package tutorial_appium;
 //khởi tạo đối tượng search
-
+//Verify button search
 public class KeySearch {
 	private String keySearch;
 	private String expect;

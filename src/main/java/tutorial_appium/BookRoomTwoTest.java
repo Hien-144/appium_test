@@ -1,5 +1,5 @@
 package tutorial_appium;
-//thuc thithi
+//thuc thithi thông tin đặt phòng
 
 import org.openqa.selenium.WebDriver;
 
