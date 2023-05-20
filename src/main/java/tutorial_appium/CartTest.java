@@ -103,7 +103,7 @@ public class CartTest {
 						continue;
 					}
 				} else {
-					
+				
 					WebElement success = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Tài khoản của tôi\")"));
 					success.click();
 					Thread.sleep(2000);

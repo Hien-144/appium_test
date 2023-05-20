@@ -55,10 +55,10 @@ public class HomeSearch {
 				System.out.println("result : " + (i - 6) + " " + test);
 				if (test) {
 					String result = "Pass";
-					ft.write(i + 73, 7, result);				
+					ft.write(i + 66, 7, result);				
 				} else {
 					String result = "Faild";
-					ft.write(i + 73, 7, result);
+					ft.write(i + 66, 7, result);
 				}
 			}	
 		}	

@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import inheritance.AuthClass;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -26,7 +25,12 @@ public class Login {
 		
 		try {
 			Bip(userLogin);
+			Thread.currentThread().getStackTrace();
+
+//			driver = Connection.getConnectionLaunch();
+//			AuthClass auth = new AuthClass(driver);
 			
+//			auth.test();
 		} catch (Exception e) {
 //			// TODO: handle exception
 //			System.out.println(e.getCause());
@@ -44,6 +48,7 @@ public class Login {
 		
 		for( int i=0;i<userLogin.size();i++) {
 			boolean a = ac.login(userLogin.get(i));
+			System.out.println("Result : " + i + " " + a);
 			if (a) {
 				String result = "Pass";
 				ft.write(i + 1, 7, result);				

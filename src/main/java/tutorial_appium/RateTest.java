@@ -56,15 +56,17 @@ public class RateTest {
 		Thread.sleep(1000);
 		WebElement search = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/edtSearchString"));
 		search.sendKeys("Hà Nội");
-		Thread.sleep(1000);
-		WebElement elemeRes = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Phố Cổ Hà Nội\")"));
+		Thread.sleep(2000);
+		WebElement elemeRes = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hà Nôi\")"));
 		elemeRes.click();
 		Thread.sleep(1000);
-		WebElement continueBtn = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Tiếp\")"));
+
+		WebElement continueBtn = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnNext"));
 		for (int i = 0; i < rates.size(); i++) {
 			
 			if (i <= 5) {
 				if (i == 0) {
+					
 					continueBtn.click();
 					
 					WebElement errorRank = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"" + rates.get(i).getExpect() + "\")"));
@@ -79,6 +81,8 @@ public class RateTest {
 						continue;
 					}
 				} else {
+					continueBtn.click();
+					
 //					System.out.println(Integer.parseInt(rates.get(i).getVote()) + "cc" + i);
 					String id = "com.tripadvisor.tripadvisor:id/imgBubble" + i;
 					WebElement bubble = cmn.getElementBy(By.id(id));
@@ -103,6 +107,7 @@ public class RateTest {
 					WebElement errorRank = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"" + rates.get(i).getExpect() + "\")"));
 					boolean res = errorRank != null;
 					try {
+						
 						System.out.println("Result : " + i + " " + res);
 						Assertions.assertTrue(res);
 						ft.write(i + 81, 7, "Pass");
@@ -112,12 +117,13 @@ public class RateTest {
 						continue;
 					}
 				} else {
+				
 					WebElement friend = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"" + rates.get(i).getType() + "\")"));
 					friend.click();
 //					System.out.println(rates.get(i).getType());
 					continueBtn.click();
 
-					WebElement next = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Phố Cổ Hà Nội\")"));
+					WebElement next = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hà Nôi\")"));
 					boolean res = next != null;
 					try {
 						System.out.println("Result : " + i + " " + res);
@@ -132,6 +138,7 @@ public class RateTest {
 			} else {
 				if (i <= 10) {
 					if(i == 8) {
+						
 						continueBtn.click();
 						boolean res = false;
 						Thread.sleep(1000);
@@ -216,7 +223,7 @@ public class RateTest {
 								System.out.println("Result : " + i + " " + res);
 								Assertions.assertFalse(res);
 								ft.write(i + 81, 7, "Pass");
-							} catch (AssertionFailedError e) {
+							} catch (Exception e) {
 								// TODO: handle exception
 								ft.write(i + 81, 7, "Failed");
 								continue;

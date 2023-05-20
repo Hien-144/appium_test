@@ -16,10 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.opentest4j.AssertionFailedError;
 
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileCommand;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
 
 public class BookTwo {
 	static AndroidDriver andDriver;
@@ -115,6 +112,8 @@ public class BookTwo {
 			WebElement applyFree= cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hiển thị\")"));
 			applyFree.click();
 			String nameHotel = "Hanoi Center Silk Hotel & Travel";  
+			Thread.sleep(1000);
+			scrollToEle(nameHotel, cmn);
 			WebElement hotel = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ nameHotel +"\")"));
 			hotel.click();
 			Thread.sleep(500);

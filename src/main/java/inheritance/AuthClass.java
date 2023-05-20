@@ -28,7 +28,12 @@ public class AuthClass extends Common{
 		this.driver = driver;
 	}
 	
+	public void test () {
+		
+	}
+	
 	public boolean login(UserLogin userLogin) throws InterruptedException {
+//		Class<?> callerClass = getClass();
 //		WebElement signupBtn = driver.findElement(By.id("com.tripadvisor.tripadvisor:id/btnSignUp"));
 //		signupBtn.click();
 		
