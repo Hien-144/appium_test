@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,10 +18,11 @@ public class Login {
 	
 	static AndroidDriver driver;
 	static FileTest ft;
-	
+	public Login() {
+	    ft = new FileTest();
+	}	
 	public static void main(String[] args) {
 		
-		ft = new FileTest();
 		ArrayList<UserLogin> userLogin = ft.Read();//hàm đọc file
 		
 		try {
@@ -51,10 +53,10 @@ public class Login {
 			System.out.println("Result : " + i + " " + a);
 			if (a) {
 				String result = "Pass";
-				ft.write(i + 1, 7, result);				
+//				ft.write(i + 1, 7, result);				
 			} else {
 				String result = "Faild";
-				ft.write(i + 1, 7, result);
+//				ft.write(i + 1, 7, result);
 			}
 
 //		driver.quit();

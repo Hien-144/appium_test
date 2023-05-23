@@ -460,13 +460,15 @@ public class FileTest {
 		File src = new File("/home/hien144/Documents/test.xlsx");//đường dẫn trỏ đến file
 		try {
 			fos = new FileOutputStream(src);
+			workbook = new XSSFWorkbook();//khởi tạo biến để đọc file xlsx
+			sheet = workbook.getSheet("Sheet1");
+			sheet.getRow(row).createCell(col).setCellValue(result);
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// Create cell where data needs to be written.
-		sheet.getRow(row).createCell(col).setCellValue(result);
-
 		// finally write content
 		try {
 			workbook.write(fos);
