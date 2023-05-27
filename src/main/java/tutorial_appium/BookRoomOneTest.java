@@ -17,6 +17,7 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.opentest4j.AssertionFailedError;
 
+import core.Common;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
@@ -24,6 +25,8 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidTouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import object.BookRoomOne;
+import ultis.FileTest;
 
 public class BookRoomOneTest {
 	

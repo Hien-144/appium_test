@@ -15,8 +15,12 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.opentest4j.AssertionFailedError;
 
+import core.Common;
+import core.Connection;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import object.BookRoomTwo;
+import ultis.FileTest;
 
 public class BookTwo {
 	static AndroidDriver andDriver;
@@ -81,7 +85,7 @@ public class BookTwo {
 	}
 	public static void run(ArrayList<BookRoomTwo> readBookRoomTwo) throws InterruptedException, MalformedURLException {
 		Common cmn = new Common(andDriver);
-		BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
+BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 		
 		if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
@@ -94,7 +98,7 @@ public class BookTwo {
 			Thread.sleep(1000);
 			WebElement testFind = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]"));
 			testFind.click();
-			String name = "Anatole Hotel";
+			String name = "Lotte Hotel Hanoi";
 			scrollToEle(name, cmn);
 			WebElement showSale = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Xem giảm giá\")"));
 			showSale.click();
@@ -112,7 +116,7 @@ public class BookTwo {
 			WebElement applyFree= cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hiển thị\")"));
 			applyFree.click();
 			String nameHotel = "Hanoi Center Silk Hotel & Travel";  
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			scrollToEle(nameHotel, cmn);
 			WebElement hotel = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ nameHotel +"\")"));
 			hotel.click();
@@ -204,7 +208,8 @@ public class BookTwo {
 					assertRes = cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ readBookRoomTwo.get(i).getExpect() +"\")"));
 				} else if ((i >= 21 && i <= 24) || (i >= 18 && i <= 19)) {
 					focusElement = cmn.getElementBy(By.xpath("//*[@resource-id='phone_number']"));
-					outClickElement = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Cần thiết để chỗ nghỉ xác nhận đặt phòng của bạn\")"));
+					outClickElement = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Có, tôi muốn xác nhận điện tử miễn phí\")"));
+//					outClickElement = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Cần thiết để chỗ nghỉ xác nhận đặt phòng của bạn\")"));
 					focusElement.clear();
 					focusElement.click();
 					focusElement.sendKeys(readBookRoomTwo.get(i).getPhone()); // readBookRoomTwo.get(i).getName() + "test"

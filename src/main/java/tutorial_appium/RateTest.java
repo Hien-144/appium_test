@@ -12,9 +12,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.v105.fetch.model.AuthChallenge;
 import org.opentest4j.AssertionFailedError;
 
+import core.Common;
+import core.Connection;
 import inheritance.AuthClass;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import object.Rated;
+import object.UserLogin;
+import ultis.FileTest;
 
 public class RateTest {
 	static AndroidDriver andDriver;
@@ -28,6 +33,8 @@ public class RateTest {
 		
 		
 	}
+	
+
 	public static void test (ArrayList<Rated> rates) throws InterruptedException, MalformedURLException {
 		andDriver = Connection.getConnectionMainAndroid();
 		Common cmn = new Common(andDriver);
@@ -55,9 +62,9 @@ public class RateTest {
 		btnWriteReview.click();
 		Thread.sleep(1000);
 		WebElement search = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/edtSearchString"));
-		search.sendKeys("Hà Nội");
+		search.sendKeys("Ha Long");
 		Thread.sleep(2000);
-		WebElement elemeRes = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hà Nôi\")"));
+		WebElement elemeRes = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hạ Long\")"));
 		elemeRes.click();
 		Thread.sleep(1000);
 
@@ -123,7 +130,7 @@ public class RateTest {
 //					System.out.println(rates.get(i).getType());
 					continueBtn.click();
 
-					WebElement next = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hà Nôi\")"));
+					WebElement next = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hạ Long\")"));
 					boolean res = next != null;
 					try {
 						System.out.println("Result : " + i + " " + res);

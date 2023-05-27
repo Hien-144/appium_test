@@ -9,8 +9,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.opentest4j.AssertionFailedError;
 
+import core.Common;
+import core.Connection;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import object.Cart;
+import ultis.FileTest;
 
 public class CartTest {
 	static AndroidDriver andDriver;
@@ -43,7 +47,7 @@ public class CartTest {
 		Thread.sleep(1000);
 		WebElement testFind = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]"));
 		testFind.click();
-		String name = "Anatole Hotel";
+		String name = "Super Hotel Candle";
 		cmn.scrollToEle(name, cmn);
 		WebElement showSale = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Xem giảm giá\")"));
 		showSale.click();

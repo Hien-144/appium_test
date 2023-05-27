@@ -4,8 +4,10 @@ package tutorial_appium;
 import org.openqa.selenium.WebElement;
 import org.opentest4j.AssertionFailedError;
 
+import core.Common;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import object.KeySearch;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;

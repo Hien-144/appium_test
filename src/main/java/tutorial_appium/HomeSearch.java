@@ -7,8 +7,13 @@ import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
+import core.Common;
+import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
+import object.KeySearch;
+import ultis.FileTest;
 
 public class HomeSearch {
 	static AndroidDriver driver;
@@ -28,7 +33,7 @@ public class HomeSearch {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+	@Test
 	public static void Bip(ArrayList<KeySearch> keySearchs)throws MalformedURLException, InterruptedException  {
 		driver = Connection.getConnectionMainAndroid();
 		Common cmn = new Common(driver);

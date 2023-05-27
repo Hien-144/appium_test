@@ -14,8 +14,12 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.opentest4j.AssertionFailedError;
 
+import core.Common;
+import core.Connection;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import object.BookActivity;
+import ultis.FileTest;
 
 public class BookActivityTest {
 	static AndroidDriver andDriver;

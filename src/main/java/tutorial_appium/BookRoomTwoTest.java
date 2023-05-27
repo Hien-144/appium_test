@@ -4,6 +4,7 @@ package tutorial_appium;
 import org.openqa.selenium.WebDriver;
 
 import io.appium.java_client.android.AndroidDriver;
+import ultis.FileTest;
 
 public class BookRoomTwoTest {
 	WebDriver driver;

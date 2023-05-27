@@ -11,9 +11,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.opentest4j.AssertionFailedError;
 
+import core.Common;
+import core.Connection;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
+import object.BookPeopleOne;
+import object.BookRoomOne;
+import ultis.FileTest;
 
 public class BookOne {
 

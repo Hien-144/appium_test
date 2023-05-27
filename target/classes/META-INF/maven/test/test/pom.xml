@@ -60,12 +60,6 @@
 	    <artifactId>xmlbeans</artifactId>
 	    <version>2.3.0</version>
 	</dependency>
-
-    <dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi-ooxml</artifactId>
-        <version>3.15</version>
-    </dependency>
     
     <dependency>
 	    <groupId>org.apache.commons</groupId>
@@ -112,9 +106,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-          			<skipTests>true</skipTests>
+          			<skipTests>false</skipTests>
        		    </configuration>
             </plugin>
+           	
 		    <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-failsafe-plugin</artifactId>
@@ -151,13 +146,14 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>tutorial_appium.BookOne</mainClass>
+                                    <mainClass>tutorial_appium.Login</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+           
         </plugins>
     </build>
 </project>

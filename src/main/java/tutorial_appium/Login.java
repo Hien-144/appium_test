@@ -11,22 +11,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import core.Common;
+import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import object.UserLogin;
+import ultis.FileTest;
 
 public class Login {
 	
 	static AndroidDriver driver;
 	static FileTest ft;
 	public Login() {
-	    ft = new FileTest();
 	}	
 	public static void main(String[] args) {
-		
+
+	    ft = new FileTest();
 		ArrayList<UserLogin> userLogin = ft.Read();//hàm đọc file
 		
 		try {
-			Bip(userLogin);
+//			Bip(userLogin);
 			Thread.currentThread().getStackTrace();
 
 //			driver = Connection.getConnectionLaunch();
@@ -40,7 +44,7 @@ public class Login {
 		}
 	}
 	
-	public static void Bip(ArrayList<UserLogin> userLogin)throws MalformedURLException, InterruptedException  {
+	public void Bip(ArrayList<UserLogin> userLogin)throws MalformedURLException, InterruptedException  {
 		driver = Connection.getConnectionLaunch();
 		Common cmn = new Common(driver);
 		WebElement test = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnEmail"));
@@ -53,10 +57,10 @@ public class Login {
 			System.out.println("Result : " + i + " " + a);
 			if (a) {
 				String result = "Pass";
-//				ft.write(i + 1, 7, result);				
+				ft.write(i + 1, 7, result);				
 			} else {
 				String result = "Faild";
-//				ft.write(i + 1, 7, result);
+				ft.write(i + 1, 7, result);
 			}
 
 //		driver.quit();
