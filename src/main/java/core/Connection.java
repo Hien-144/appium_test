@@ -54,7 +54,7 @@ public class Connection {
 		DesiredCapabilities cc = new DesiredCapabilities();
 //		cc.setCapability("automationName", "UiAutomator2");
 		cc.setCapability("deviceName", "First");
-		cc.setCapability("uuid", "16eec1ec"); // 16eec1ec  9xifqwskj7tcxklf
+		cc.setCapability("uuid", "emulator-5554"); // 16eec1ec  9xifqwskj7tcxklf
 		cc.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		cc.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
 //		cc.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");

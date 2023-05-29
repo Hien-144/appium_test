@@ -1,46 +1,54 @@
-package tutorial_appium;
+package feature;
 
+import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import core.Common;
 import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
+import object.BookActivity;
 import object.BookPeopleOne;
 import object.BookRoomOne;
+import tutorial_appium.AuthClass;
+import tutorial_appium.BookRoomOneTest;
+import tutorial_appium.homeTest;
 import ultis.FileTest;
 
-public class BookOne {
+public class BookOneTest {
 
-	static AndroidDriver andDriver;
-	static FileTest ft;
+	AndroidDriver andDriver;
+	ArrayList<BookActivity> bookActivities;
+	AuthClass ac;
+	FileTest ft;
+	Common cmn;
+	homeTest ht;
+	ArrayList<BookRoomOne> readBooks;
+	ArrayList<BookPeopleOne> bookPeopleOnes;
+	BookRoomOneTest brot;
 	
-	public static void main(String[] args) throws MalformedURLException, InterruptedException {
-		
-		ft = new FileTest();
-		
-		ArrayList<BookRoomOne> readBook = ft.ReadBookRoomOne();
-		ArrayList<BookPeopleOne> readPeople = ft.readBookPeopleOne();
-		runBook(readBook, true);
-		runPeole(readPeople);
-		reSet();
-		apply();
-//		for (int i=0; i < readBook.size() ; i++) {
-//			System.out.println(readBook.get(i).getFrom()+ readBook.get(i).getMonthFrom() + readBook.get(i).getTo() + readBook.get(i).getMonthTo());
-//		}
-		System.out.println("Finish");
-		
-	}
-	
-	public static void runBook(ArrayList<BookRoomOne> readBooks, boolean check) throws MalformedURLException, InterruptedException {
+    @BeforeTest
+    public void beforeTest() throws MalformedURLException, InterruptedException {
+        System.out.println("Before test");
+
+	    ft = new FileTest();
+		readBooks = ft.ReadBookRoomOne();
+		bookPeopleOnes = ft.readBookPeopleOne();
+
 		andDriver = Connection.getConnectionMainAndroid();
-		Common cmn = new Common(andDriver);
-		BookRoomOneTest brot = new BookRoomOneTest(andDriver);
+		cmn = new Common(andDriver);
+		brot = new BookRoomOneTest(andDriver);
+    }
+    
+    @Test
+    public void testBook() throws InterruptedException {
 		if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
 			signupKhachsan.click();
@@ -58,26 +66,22 @@ public class BookOne {
 			}
 		}
 		for (int i = 0; i < readBooks.size() ; i++) {
+			boolean check = true;
 			boolean res = brot.homeBook(readBooks.get(i), check);
-			if (check) {
-				System.out.println("Result : " + i + " " + res);
-				if (res) {
-					ft.write(i + 17, 7, "Pass");
-				} else {
-					ft.write(i + 17, 7, "Failed");	
-				}
-				brot.scrollBack("5", cmn);
+			System.out.println("Result : " + i + " " + res);
+			if (res) {
+				ft.write(i + 17, 7, "Pass");
+			} else {
+				ft.write(i + 17, 7, "Failed");	
 			}
+			brot.scrollBack("5", cmn);
 			Thread.sleep(500);
-		}	
-	}
-	
-	public static void runPeole(ArrayList<BookPeopleOne> bookPeopleOnes) throws InterruptedException, MalformedURLException  {
-		andDriver = Connection.getConnectionMainAndroid();
-		Common cmn = new Common(andDriver);
-		BookRoomOneTest brot = new BookRoomOneTest(andDriver);
-		
-		Thread.sleep(5000);
+		}
+    }
+    
+    @Test
+    public void testPeople() throws InterruptedException {
+    	Thread.sleep(5000);
 		if(cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
 			signupKhachsan.click();
@@ -183,16 +187,56 @@ public class BookOne {
 				}
 			}
 		}
-	}
-	
-	public static void reSet() throws MalformedURLException, InterruptedException {
+    }
+
+    
+    @Test
+    public void testApply() throws InterruptedException {
+		ArrayList<BookRoomOne> bros = new ArrayList<BookRoomOne>();
+		BookRoomOne bookRoomOne = ft.readLine(30);
+		bros.add(bookRoomOne);
+		if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
+			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
+			signupKhachsan.click();
+			Thread.sleep(2000);
+			
+			if(cmn.isElementPresent(By.id("com.tripadvisor.tripadvisor:id/edtSearchString"))) {
+				WebElement input = andDriver.findElement(By.id("com.tripadvisor.tripadvisor:id/edtSearchString"));
+				input.sendKeys("Hà Nội");
+				Thread.sleep(1000);
+				WebElement testFind = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]"));
+				testFind.click();
+				Thread.sleep(3000);
+				WebElement testFind1 = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"));
+				testFind1.click();	
+			}
+		}
+		for (int i = 0; i < readBooks.size() ; i++) {
+			boolean res = brot.homeBook(readBooks.get(i), false);
+		}
+		Thread.sleep(500);
+
+		WebElement applyBtn = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnPrimary"));
+		applyBtn.click();
+		 
+		WebElement check1 = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"));
+		String actual = check1.getText();
+		
+		try {
+			System.out.println("Result apply : " + bookRoomOne.getExpect().contains(actual));
+			Assert.assertTrue(bookRoomOne.getExpect().contains(actual));
+			ft.write(30, 7, "Pass");
+		} catch (Exception e) {
+			ft.write(30, 7, "Faild");
+			// TODO: handle exception
+		}
+    	
+    }
+  
+    @Test
+    public void testReset() throws InterruptedException {
 		BookRoomOne broreset = ft.readLine(29);
-		
-		andDriver = Connection.getConnectionMainAndroid();
-		Common cmn = new Common(andDriver);
-		BookRoomOneTest brot = new BookRoomOneTest(andDriver);
-		
-		Thread.sleep(5000);
+    	Thread.sleep(5000);
 		if(!cmn.isElementPresent(By.id("com.tripadvisor.tripadvisor:id/bdlBtnSecondary"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
 			signupKhachsan.click();
@@ -224,35 +268,28 @@ public class BookOne {
 			ft.write(29, 7, "Faild");
 			return;
 		}
-	}
-
-	private static void apply() throws MalformedURLException, InterruptedException {
-		ArrayList<BookRoomOne> bros = new ArrayList<BookRoomOne>();
-		Common cmn = new Common(andDriver);
-		
-		BookRoomOne bookRoomOne = ft.readLine(30);
-		bros.add(bookRoomOne);
-		WebElement selectDay = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout"));
-		selectDay.click();
-		
-		
-		runBook(bros, false);
-		andDriver = Connection.getConnectionMainAndroid();
-		
-		WebElement applyBtn = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnPrimary"));
-		applyBtn.click();
-		 
-		WebElement check1 = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"));
-		String actual = check1.getText();
-		
-		try {
-			System.out.println("Result apply : " + bookRoomOne.getExpect().contains(actual));
-			Assert.assertTrue(bookRoomOne.getExpect().contains(actual));
-			ft.write(30, 7, "Pass");
-		} catch (Exception e) {
-			ft.write(30, 7, "Faild");
-			// TODO: handle exception
-		}
-	}
-
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

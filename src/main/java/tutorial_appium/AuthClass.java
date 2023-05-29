@@ -1,10 +1,10 @@
 package tutorial_appium;
 
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By.ByXPath;
-import org.opentest4j.AssertionFailedError;
+import org.openqa.selenium.WebElement;
+
+import org.testng.Assert;
 
 import core.Common;
 import io.appium.java_client.AppiumBy;
@@ -46,9 +46,9 @@ public class AuthClass extends Common{
 			boolean testB = expectedResult.equalsIgnoreCase(actualMessage);
 //			System.out.print(actualMessage + " " + userLogin.getExpect());
 			try {
-				Assertions.assertTrue(testB);
+				Assert.assertTrue(testB);
 				return true;
-			} catch (AssertionFailedError e) {
+			} catch (Exception e) {
 //				e.printStackTrace();
 				return false;
 			}
@@ -59,13 +59,13 @@ public class AuthClass extends Common{
 			String expectedResult1 = userLogin.getExpect();
 			Boolean testB1 = expectedResult1.equalsIgnoreCase(actualResult);
 			try {
-				Assertions.assertTrue(testB1);
+				Assert.assertTrue(testB1);
 				WebElement skip = this.driver.findElement(By.id("com.tripadvisor.tripadvisor:id/bdlBtnTextPrimary"));
 				skip.click();
 				Thread.sleep(3000);
 				
 				return testB1;
-			} catch (AssertionFailedError e) {
+			} catch (Exception e) {
 //				e.printStackTrace();
 				
 				return false;
@@ -76,13 +76,13 @@ public class AuthClass extends Common{
 			String expectedResult2 = userLogin.getExpect();
 			Boolean testB2 = expectedResult2.equalsIgnoreCase(actualResult2);
 			try {
-				Assertions.assertTrue(testB2); 
+				Assert.assertTrue(testB2); 
 				WebElement after = driver.findElement(By.id("com.tripadvisor.tripadvisor:id/bdlBtnNotNow"));
 				after.click();
 				Thread.sleep(1000);
 			
 				return testB2;
-			} catch (AssertionFailedError e) {
+			} catch (Exception e) {
 //				e.printStackTrace();
 				
 				return false;

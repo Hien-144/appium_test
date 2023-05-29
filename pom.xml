@@ -6,6 +6,8 @@
   <properties>
    <maven.compiler.source>17</maven.compiler.source>
    <maven.compiler.target>17</maven.compiler.target>
+    <aspectj.version>1.9.6</aspectj.version>
+    <allure-testng-version>2.13.9</allure-testng-version>
  </properties>
  
   <dependencies>
@@ -66,65 +68,17 @@
 	    <artifactId>commons-compress</artifactId>
 	    <version>1.20</version>
 	</dependency>
+	<dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng-version}</version>
+        </dependency>
 	<!-- -->
-	<dependency>
-	    <groupId>org.junit.platform</groupId>
-	    <artifactId>junit-platform-launcher</artifactId>
-	    <version>1.6.0</version>
-
-	</dependency>
-	<dependency>
-	    <groupId>org.junit.jupiter</groupId>
-	    <artifactId>junit-jupiter-engine</artifactId>
-	    <version>5.6.0</version>
-	   
-	</dependency>
-	<dependency>
-	    <groupId>org.junit.jupiter</groupId>
-	    <artifactId>junit-jupiter-api</artifactId>
-	    <version>5.9.1</version>
-	    
-	</dependency>
-	<dependency>
-	    <groupId>org.junit.vintage</groupId>
-	    <artifactId>junit-vintage-engine</artifactId>
-	    <version>5.6.0</version>
-	   
-	</dependency>
-	 <dependency>
-	    <groupId>org.opentest4j</groupId>
-	    <artifactId>opentest4j</artifactId>
-	    <version>1.2.0</version>
-	 
-	</dependency>
 		<!-- -->	
   </dependencies>
   <build>
         <plugins>
-			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-          			<skipTests>false</skipTests>
-       		    </configuration>
-            </plugin>
-           	
-		    <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-failsafe-plugin</artifactId>
-		        <version>3.0.0</version>
-		        <executions>
-		          <execution>
-		            <id>integration-test</id>
-		            <goals>
-		              <goal>integration-test</goal>
-		              <goal>verify</goal>
-		            </goals>
-		          </execution>
-		        </executions>
-		    </plugin>
-            <plugin>
+			 <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
@@ -133,25 +87,25 @@
                     <target>17</target>
                 </configuration>
             </plugin>
-            <plugin>
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>tutorial_appium.Login</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0</version>
+                 <configuration>
+                <suiteXmlFiles>
+                    <suiteXmlFile>src/test/resources/RunTestNG.xml</suiteXmlFile>
+                </suiteXmlFiles>
+                <argLine>
+                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                </argLine>
+            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>1.9.6</version>
+                </dependency>
+            </dependencies>
             </plugin>
            
         </plugins>

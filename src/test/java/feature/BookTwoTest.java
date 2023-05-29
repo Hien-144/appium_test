@@ -1,90 +1,48 @@
-package tutorial_appium;
-//khởi chạy thông tin đặt phòng 
-//verify các trường thông tin khách đặt phòng
+package feature;
+
 import java.net.MalformedURLException;
-import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import core.Common;
 import core.Connection;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import object.BookRoomTwo;
+import tutorial_appium.AuthClass;
+import tutorial_appium.BookRoomTwoTest;
+import tutorial_appium.homeTest;
 import ultis.FileTest;
 
-public class BookTwo {
-	static AndroidDriver andDriver;
-	static FileTest ft;
+public class BookTwoTest {
+
+	AndroidDriver andDriver;
+	ArrayList<BookRoomTwo> readBookRoomTwo;
+	AuthClass ac;
+	FileTest ft;
+	Common cmn;
+	homeTest ht;
 	
-	public static void main(String[] args) throws MalformedURLException, InterruptedException {
-		ft = new FileTest();
+    @BeforeTest
+    public void beforeTest() throws MalformedURLException, InterruptedException {
+        System.out.println("Before test");
+
+	    ft = new FileTest();
+	    readBookRoomTwo = ft.readBookRoomTwo();
+
 		andDriver = Connection.getConnectionMainAndroid();
-		ArrayList<BookRoomTwo> readBookRoomTwo = ft.readBookRoomTwo();
-		
-		run(readBookRoomTwo);
-		System.out.println("Finish");
-	}
-	public static void scrollToEle(String name, Common cmn) {
-		while(!cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ name +"\")"))) {
-//			WebElement end = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/weekDays"));
-			int centerX = 500;
-			double startY = 2000;
-			double endY = 1100;
-			PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-			Sequence sequence = new Sequence(finger, 1);
-			sequence.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), centerX, (int) startY));
-			sequence.addAction(finger.createPointerDown(0));
-			sequence.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), centerX, (int)endY));
-			sequence.addAction(finger.createPointerUp(0));
-			andDriver.perform(Arrays.asList(sequence));
-		}
-		
-		WebElement res = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ name +"\")"));
-		int centerX = res.getRect().x + (res.getSize().width / 2);
-		double startY = res.getRect().y;
-		double endY = andDriver.manage().window().getSize().getHeight() / 2; PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence sequence = new Sequence(finger, 1); sequence.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), centerX, (int) startY));				
-		sequence.addAction(finger.createPointerDown(0));
-		sequence.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), centerX, (int)endY));
-		sequence.addAction(finger.createPointerUp(0));
-		andDriver.perform(Arrays.asList(sequence));
-	}
-	public static void scrollToEleText(String name, Common cmn) {
-		while(!cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().text(\""+ name +"\")"))) {
-//			WebElement end = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/weekDays"));
-			int centerX = 500;
-			double startY = 2000;
-			double endY = 1100;
-			PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-			Sequence sequence = new Sequence(finger, 1);
-			sequence.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), centerX, (int) startY));
-			sequence.addAction(finger.createPointerDown(0));
-			sequence.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), centerX, (int)endY));
-			sequence.addAction(finger.createPointerUp(0));
-			andDriver.perform(Arrays.asList(sequence));
-		}
-		WebElement res = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ name +"\")"));
-		int centerX = res.getRect().x + (res.getSize().width / 2);
-		double startY = res.getRect().y;
-		double endY = andDriver.manage().window().getSize().getHeight() / 2; PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence sequence = new Sequence(finger, 1); sequence.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), centerX, (int) startY));				
-		sequence.addAction(finger.createPointerDown(0));
-		sequence.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), centerX, (int)endY));
-		sequence.addAction(finger.createPointerUp(0));
-		andDriver.perform(Arrays.asList(sequence));
-	}
-	public static void run(ArrayList<BookRoomTwo> readBookRoomTwo) throws InterruptedException, MalformedURLException {
-		Common cmn = new Common(andDriver);
-BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
+		cmn = new Common(andDriver);
+    }
+    
+    @Test
+    public void test() throws InterruptedException {
+    	BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 		
 		if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
@@ -98,7 +56,7 @@ BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 			WebElement testFind = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]"));
 			testFind.click();
 			String name = "Lotte Hotel Hanoi";
-			scrollToEle(name, cmn);
+			cmn.scrollToEle(name, andDriver);
 			WebElement showSale = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Xem giảm giá\")"));
 			showSale.click();
 //			AndroidDriver
@@ -116,7 +74,7 @@ BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 			applyFree.click();
 			String nameHotel = "Hanoi Center Silk Hotel & Travel";  
 			Thread.sleep(2000);
-			scrollToEle(nameHotel, cmn);
+			cmn.scrollToEle(nameHotel, andDriver);
 			WebElement hotel = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ nameHotel +"\")"));
 			hotel.click();
 			Thread.sleep(500);
@@ -124,19 +82,19 @@ BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 //			System.out.println(bookRoom1.getText());
 			bookRoom1.click();
 			Thread.sleep(2000);
-			scrollToEleText("Đặt phòng", cmn);
+			cmn.scrollToEleText("Đặt phòng", andDriver);
 			WebElement bookRoom = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\"Đặt phòng\")"));
 //			System.out.println(bookRoom.getText());
 			bookRoom.click();
 			Thread.sleep(3000);
 			String nextStep= "Bước tiếp theo";
-			scrollToEle(nextStep, cmn);
+			cmn.scrollToEle(nextStep, andDriver);
 			WebElement nextStepEle = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+nextStep+"\")"));
 			nextStepEle.click();
 //			System.out.println(nextStepEle.getText());
 			Thread.sleep(5000);
 			String nameCheck = "thông tin chi tiết của bạn";
-			scrollToEle(nameCheck, cmn);
+			cmn.scrollToEle(nameCheck, andDriver);
 			WebElement nextCheckEle = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+nameCheck+"\")"));
 //			nextCheckEle.click();
 ////			thông tin chi tiết của bạn
@@ -184,7 +142,7 @@ BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 //					System.out.println("Sout res : " + assertRes);
 				} else if (i == 16) {
 //					andDriver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().resourceId(\"cc1\"))"));
-					scrollToEle("Vùng/quốc gia", cmn);
+					cmn.scrollToEle("Vùng/quốc gia", andDriver);
 //					String country = focusElement.getText();
 					assertRes = cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ readBookRoomTwo.get(i).getExpect() +"\")"));	
 				} else if (i == 17) {
@@ -249,19 +207,19 @@ BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 			
 			
 			String nextStepEnd= "Đến bước cuối cùng";
-			scrollToEle(nextStepEnd, cmn);
+			cmn.scrollToEle(nextStepEnd, andDriver);
 			WebElement nextStepEleEnd = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+nextStepEnd+"\")"));
 			nextStepEleEnd.click();
 //			System.out.println(nextStepEleEnd.getText());
 			Thread.sleep(1000);
 			String nextStepEnd1= "Hoàn tất đặt chỗ";
-			scrollToEle(nextStepEnd1, cmn);
+			cmn.scrollToEle(nextStepEnd1, andDriver);
 			WebElement nextStepEleEnd1 = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+nextStepEnd1+"\")"));
 			nextStepEleEnd1.click();
 			System.out.println(nextStepEleEnd1.getText());
 			Thread.sleep(5000);
 			String nextStepEnd2= "Xem tiếp xác nhận trên web";
-			scrollToEle(nextStepEnd2, cmn);
+			cmn.scrollToEle(nextStepEnd2, andDriver);
 			WebElement nextStepEleEnd2 = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+nextStepEnd2+"\")"));
 			nextStepEleEnd2.click();
 			Thread.sleep(3000);
@@ -299,11 +257,7 @@ BookRoomTwoTest brot2 = new BookRoomTwoTest(andDriver);
 				}
 //			}
 			Thread.sleep(1000);
-//			password-error
 		}
-	}
-}
-//Đến bước cuối cùng
-//Hoàn tất đặt chỗ
-//Đặt chỗ của bạn đã được xác nhận
+    }
 
+}

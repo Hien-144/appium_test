@@ -2,19 +2,14 @@ package tutorial_appium;
 //khởi chạy login
 // Verify đăng nhập bằng email
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import core.Common;
 import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
 import object.UserLogin;
 import ultis.FileTest;
 

@@ -1,40 +1,49 @@
-package tutorial_appium;
-//khởi chạy đánh giá 
-//verify đánh giá
+package feature;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import core.Common;
 import core.Connection;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import object.Cart;
 import object.Rated;
 import object.UserLogin;
+import tutorial_appium.AuthClass;
+import tutorial_appium.homeTest;
 import ultis.FileTest;
 
 public class RateTest {
-	static AndroidDriver andDriver;
-	static FileTest ft;
 
-	public static void main(String[] args) throws InterruptedException, MalformedURLException {
-		ft = new FileTest();
-		ArrayList<Rated> rates = ft.readRated();
-		test(rates);
-		System.out.println("Finish");
-		
-		
-	}
+	AndroidDriver andDriver;
+	ArrayList<Rated> rates;
+	AuthClass ac;
+	FileTest ft;
+	Common cmn;
+	homeTest ht;
 	
+    @BeforeTest
+    public void beforeTest() throws MalformedURLException, InterruptedException {
+        System.out.println("Before test");
 
-	public static void test (ArrayList<Rated> rates) throws InterruptedException, MalformedURLException {
+	    ft = new FileTest();
+	    rates = ft.readRated();
+
 		andDriver = Connection.getConnectionMainAndroid();
-		Common cmn = new Common(andDriver);
-		Thread.sleep(3000);
+		cmn = new Common(andDriver);
+    }
+    
+    @Test
+    public void test() throws InterruptedException {
+    	Thread.sleep(3000);
 		WebElement tabAccount = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/tab_account"));
 		tabAccount.click();
 		Thread.sleep(2000);
@@ -293,6 +302,5 @@ public class RateTest {
 			}
 			
 		}
-	}
+    }
 }
-

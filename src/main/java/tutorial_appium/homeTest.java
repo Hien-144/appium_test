@@ -1,18 +1,15 @@
 package tutorial_appium;
+
+import org.openqa.selenium.By;
 //thực thi testcase  search
 ////Verify button search
 import org.openqa.selenium.WebElement;
-import org.opentest4j.AssertionFailedError;
+import org.testng.Assert;
 
 import core.Common;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import object.KeySearch;
-
-import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.By.ByXPath;
-import org.openqa.selenium.WebDriver;
 
 public class homeTest extends Common{
 	AndroidDriver driver;
@@ -38,10 +35,10 @@ public class homeTest extends Common{
 		}
 		
 		try {
-			Assertions.assertTrue(test);
+			Assert.assertTrue(test);
 			
 			return true;
-		} catch (AssertionFailedError e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			return false;
 		}		
@@ -67,13 +64,13 @@ public class homeTest extends Common{
 			}
 		}
 		try {
-			Assertions.assertTrue(test);
+			Assert.assertTrue(test);
 			WebElement  backBtn = this.driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Quay lại\"]/android.widget.ImageView"));
 			backBtn.click();
 			Thread.sleep(2000);
 			//android.view.ViewGroup[@content-desc="Quay lại"]/android.widget.ImageView
 			return true;
-		} catch (AssertionFailedError e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			WebElement  backBtn = this.driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Quay lại\"]/android.widget.ImageView"));
 			backBtn.click();

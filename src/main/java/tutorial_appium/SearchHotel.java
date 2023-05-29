@@ -3,28 +3,16 @@ package tutorial_appium;
 //Verify button search khi chọn tìm kiếm qua nút khách sạn
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.By.ByXPath;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import core.Common;
 import core.Connection;
-import dev.failsafe.internal.util.Assert;
-import inheritance.AuthClass;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
 import object.KeySearch;
 import ultis.FileTest;
-
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class SearchHotel{
 

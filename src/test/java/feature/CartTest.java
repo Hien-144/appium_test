@@ -1,42 +1,46 @@
-package tutorial_appium;
-//khởi chạy thực thi đơn đã đặt 
-// verify giỏ hàng
+package feature;
+
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import core.Common;
 import core.Connection;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import object.Cart;
+import tutorial_appium.AuthClass;
+import tutorial_appium.homeTest;
 import ultis.FileTest;
 
 public class CartTest {
-	static AndroidDriver andDriver;
-	static FileTest ft;
 
-	public CartTest() {
-		super();
-		
-	}
+	AndroidDriver andDriver;
+	ArrayList<Cart> carts;
+	AuthClass ac;
+	FileTest ft;
+	Common cmn;
+	homeTest ht;
 	
-	public static void main(String[] args) throws InterruptedException, MalformedURLException {
-		ft = new FileTest();
-		ArrayList<Cart> carts = ft.readCart();
+    @BeforeTest
+    public void beforeTest() throws MalformedURLException, InterruptedException {
+        System.out.println("Before test");
+
+	    ft = new FileTest();
+	    carts = ft.readCart();
+
 		andDriver = Connection.getConnectionMainAndroid();
-		test(carts);
-		System.out.println("Finish");
-	}
-	
-	public static void test(ArrayList<Cart> carts) throws InterruptedException {
-		Common cmn = new Common(andDriver);
-
-		if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
+		cmn = new Common(andDriver);
+    }
+    
+    @Test
+    public void test() throws InterruptedException {
+    	if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
 			signupKhachsan.click();
 			Thread.sleep(2000);	
@@ -135,8 +139,5 @@ public class CartTest {
 				}
 			}
 		}
-		
-	}
+    }
 }
-
-

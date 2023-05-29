@@ -2,29 +2,21 @@ package tutorial_appium;
 //thực thi 
 //verify ngày đặt phòng
 
-import java.awt.Point;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Assertions;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-import org.opentest4j.AssertionFailedError;
+import org.testng.Assert;
 
 import core.Common;
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidTouchAction;
-import io.appium.java_client.touch.offset.PointOption;
 import object.BookRoomOne;
 import ultis.FileTest;
 
@@ -62,12 +54,12 @@ public class BookRoomOneTest {
 					String actual = expiration.getText();
 					boolean res = actual.equalsIgnoreCase(bookRoomOne.getExpect());
 					try {
-						Assertions.assertTrue(res);
+						Assert.assertTrue(res);
 						WebElement cancel = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/imgCircularBtnIcon"));
 						cancel.click();
 						Thread.sleep(500);
 						return true;
-					} catch (AssertionFailedError e) {
+					} catch (Exception e) {
 						// TODO: handle exception
 						return false;
 					}
@@ -76,10 +68,10 @@ public class BookRoomOneTest {
 					String actual = result.getText();
 					boolean res = actual.equalsIgnoreCase(bookRoomOne.getExpect());
 					try {
-						Assertions.assertTrue(res);
+						Assert.assertTrue(res);
 						Thread.sleep(500);
 						return true;
-					} catch (AssertionFailedError e) {
+					} catch (Exception e) {
 						// TODO: handle exception
 						return false;
 					}
