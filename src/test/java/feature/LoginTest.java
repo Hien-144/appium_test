@@ -6,16 +6,19 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import core.Common;
 import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Epic;
 import object.UserLogin;
 import tutorial_appium.AuthClass;
 import tutorial_appium.Login;
 import ultis.FileTest;
 
+@Epic("Login")
 public class LoginTest {
 	AndroidDriver driver;
 	ArrayList<UserLogin> userLogin;
@@ -36,9 +39,9 @@ public class LoginTest {
 		ac = new AuthClass(driver);
     }
 
-    @Test
-    public void test() throws MalformedURLException, InterruptedException {
-//        System.out.println("Test");
+    @Test()
+    public void testLogin() throws MalformedURLException, InterruptedException {
+        System.out.println("Test");
     	for (UserLogin userLogin2 : userLogin) {
 			System.out.println(userLogin2.getUsername());
 		}
@@ -54,6 +57,6 @@ public class LoginTest {
 				ft.write(i + 1, 7, result);
 			}
     	}
-
     }
+    
 }
