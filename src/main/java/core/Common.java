@@ -23,6 +23,7 @@ public class Common {
 		this.andDriver = andDriver;
 	}
 
+
 	public boolean isElementPresent(By by) {   
 		try {
 			andDriver.findElement(by);

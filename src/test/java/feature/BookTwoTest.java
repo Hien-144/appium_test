@@ -7,9 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import core.BaseTest;
 import core.Common;
 import core.Connection;
 import io.appium.java_client.AppiumBy;
@@ -20,7 +23,7 @@ import tutorial_appium.BookRoomTwoTest;
 import tutorial_appium.homeTest;
 import ultis.FileTest;
 
-public class BookTwoTest {
+public class BookTwoTest extends BaseTest{
 
 	AndroidDriver andDriver;
 	ArrayList<BookRoomTwo> readBookRoomTwo;
@@ -31,7 +34,7 @@ public class BookTwoTest {
 	
     @BeforeTest
     public void beforeTest() throws MalformedURLException, InterruptedException {
-        System.out.println("Before test");
+        System.out.println("Before test BookTwoTest");
 
 	    ft = new FileTest();
 	    readBookRoomTwo = ft.readBookRoomTwo();
@@ -259,5 +262,10 @@ public class BookTwoTest {
 			Thread.sleep(1000);
 		}
     }
+//    @AfterMethod
+//	public void tearDownTest() {
+//		System.out.println("Quit driver");
+//		andDriver.quit();
+//	}
 
 }

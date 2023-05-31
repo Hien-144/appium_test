@@ -52,7 +52,7 @@ public class Connection {
 	
 	public static DesiredCapabilities getDesiredCapabilities(String activity) {
 		DesiredCapabilities cc = new DesiredCapabilities();
-//		cc.setCapability("automationName", "UiAutomator2");
+		cc.setCapability("automationName", "UiAutomator2");
 		cc.setCapability("deviceName", "First");
 		cc.setCapability("uuid", "2240aeba"); // 16eec1ec  9xifqwskj7tcxklf
 		cc.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");

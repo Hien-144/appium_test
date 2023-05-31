@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import core.BaseTest;
 import core.Common;
 import core.Connection;
 import io.appium.java_client.AppiumBy;
@@ -21,7 +24,7 @@ import tutorial_appium.AuthClass;
 import tutorial_appium.homeTest;
 import ultis.FileTest;
 
-public class RateTest {
+public class RateTest extends BaseTest{
 
 	AndroidDriver andDriver;
 	ArrayList<Rated> rates;
@@ -30,9 +33,9 @@ public class RateTest {
 	Common cmn;
 	homeTest ht;
 	
-    @BeforeTest
+    @BeforeMethod
     public void beforeTest() throws MalformedURLException, InterruptedException {
-        System.out.println("Before test");
+        System.out.println("Before test RateTest");
 
 	    ft = new FileTest();
 	    rates = ft.readRated();
@@ -303,4 +306,10 @@ public class RateTest {
 			
 		}
     }
+    
+    @AfterMethod
+	public void tearDownTest() {
+		System.out.println("Quit driver");
+		andDriver.quit();
+	}
 }

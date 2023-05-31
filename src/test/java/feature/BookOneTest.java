@@ -8,9 +8,13 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import core.BaseTest;
 import core.Common;
 import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
@@ -22,7 +26,7 @@ import tutorial_appium.BookRoomOneTest;
 import tutorial_appium.homeTest;
 import ultis.FileTest;
 
-public class BookOneTest {
+public class BookOneTest extends BaseTest {
 
 	AndroidDriver andDriver;
 	ArrayList<BookActivity> bookActivities;
@@ -36,7 +40,7 @@ public class BookOneTest {
 	
     @BeforeTest
     public void beforeTest() throws MalformedURLException, InterruptedException {
-        System.out.println("Before test");
+        System.out.println("Before test BookOneTest");
 
 	    ft = new FileTest();
 		readBooks = ft.ReadBookRoomOne();
@@ -269,6 +273,12 @@ public class BookOneTest {
 			return;
 		}
     }
+    
+//    @AfterTest
+//	public void tearDownTest() {
+//		System.out.println("Quit driver");
+//		andDriver.quit();
+//	}
 }
 
 

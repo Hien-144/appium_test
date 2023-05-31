@@ -39,6 +39,7 @@ public class FileTest {
 	private ArrayList<Cart> readCart;
 	private ArrayList<BookActivity> readBookActivity ;
 	private ArrayList<Rated> readRated;
+	private String pathData =  System.getProperty("user.dir")+ "/test.xlsx";
 
 	public FileTest() {
 		super();
@@ -61,7 +62,7 @@ public class FileTest {
 
 	public ArrayList<UserLogin> Read() {//hàm đọc login
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -95,7 +96,7 @@ public class FileTest {
 	
 	public ArrayList<KeySearch> ReadSearch() {//hàm đọc searchsearch
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -134,7 +135,7 @@ public class FileTest {
 	
 	public ArrayList<BookRoomOne> ReadBookRoomOne () {//hàm đọc lọc dữ liệu chọn ngàyngày
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -175,7 +176,7 @@ public class FileTest {
 	
 	public ArrayList<BookPeopleOne> readBookPeopleOne () {//hàm đọc lọc dữ liệu chọn phòng và người
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -221,7 +222,7 @@ public class FileTest {
 	
 	public BookRoomOne readLine (int line) {//hàm đọc ddawth lạilại
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		BookRoomOne bro = new BookRoomOne();
 		
@@ -269,7 +270,7 @@ public class FileTest {
 	}
 	public ArrayList<BookRoomTwo> readBookRoomTwo() {//hàm đọc đặt phòngphòng
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -325,7 +326,7 @@ public class FileTest {
 	
 	public ArrayList<Cart> readCart() {//hàm đọc giỏ hàng 
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -368,7 +369,7 @@ public class FileTest {
 
 	public ArrayList<BookActivity> ReadBookActivity () {//hàm đọc lọc dữ liệu chọn ngày book hoạt động
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -416,7 +417,7 @@ public class FileTest {
 	
 	public ArrayList<Rated> readRated() {//hàm đọc đánh giá
 		// Import file excel
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		FileInputStream fis = null;//để đọc dữ liệu từ một tệp dưới dạng chuỗi byte
 		
 		try {
@@ -466,7 +467,7 @@ public class FileTest {
 	
 	public void write(int row, int col, String result) {
 		FileOutputStream fos = null;
-		File src = new File("/home/hien144/eclipse-workspace/test/test.xlsx");//đường dẫn trỏ đến file
+		File src = new File(pathData);//đường dẫn trỏ đến file
 		try {
 			fos = new FileOutputStream(src);
 //			workbook = new XSSFWorkbook();//khởi tạo biến để đọc file xlsx

@@ -5,9 +5,12 @@ import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import core.BaseTest;
 import core.Common;
 import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
@@ -16,7 +19,7 @@ import tutorial_appium.AuthClass;
 import tutorial_appium.homeTest;
 import ultis.FileTest;
 
-public class SearchHotelTest {
+public class SearchHotelTest extends BaseTest{
 	AndroidDriver driver;
 	ArrayList<KeySearch> keySearchs;
 	AuthClass ac;
@@ -26,7 +29,7 @@ public class SearchHotelTest {
 	
     @BeforeTest
     public void beforeTest() throws MalformedURLException, InterruptedException {
-        System.out.println("Before test");
+        System.out.println("Before test SearchHotelTest");
 
 	    ft = new FileTest();
 		keySearchs = ft.ReadSearch();//hàm đọc file
@@ -63,5 +66,11 @@ public class SearchHotelTest {
 		}
 		System.out.println("Finish");
     }
+    
+//    @AfterMethod
+//	public void tearDownTest() {
+//		System.out.println("Quit driver");
+//		driver.quit();
+//	}
 
 }

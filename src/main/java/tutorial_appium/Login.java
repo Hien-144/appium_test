@@ -25,7 +25,7 @@ public class Login {
 		ArrayList<UserLogin> userLogin = ft.Read();//hàm đọc file
 		
 		try {
-//			Bip(userLogin);
+			Bip1(userLogin);
 			Thread.currentThread().getStackTrace();
 
 //			driver = Connection.getConnectionLaunch();
@@ -63,4 +63,31 @@ public class Login {
 		}
 		System.out.println("Finish");
 	}
+
+	public static void Bip1(ArrayList<UserLogin> userLogin)throws MalformedURLException, InterruptedException  {
+		driver = Connection.getConnectionLaunch();
+		Common cmn = new Common(driver);
+		WebElement test = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnEmail"));
+		test.click();
+		
+		AuthClass ac = new AuthClass(driver);
+		
+		for( int i=0;i<userLogin.size();i++) {
+			boolean a = ac.login(userLogin.get(i));
+			System.out.println("Result : " + i + " " + a);
+			if (a) {
+				String result = "Pass";
+				ft.write(i + 1, 7, result);				
+			} else {
+				String result = "Faild";
+				ft.write(i + 1, 7, result);
+			}
+
+//		driver.quit();
+		
+		}
+		System.out.println("Finish");
+	}
+
+
 }

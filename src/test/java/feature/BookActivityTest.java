@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import core.BaseTest;
 import core.Common;
 import core.Connection;
 import io.appium.java_client.AppiumBy;
@@ -20,7 +23,7 @@ import tutorial_appium.AuthClass;
 import tutorial_appium.homeTest;
 import ultis.FileTest;
 
-public class BookActivityTest {
+public class BookActivityTest extends BaseTest {
 
 	AndroidDriver andDriver;
 	ArrayList<BookActivity> bookActivities;
@@ -31,7 +34,7 @@ public class BookActivityTest {
 	
     @BeforeTest
     public void beforeTest() throws MalformedURLException, InterruptedException {
-        System.out.println("Before test");
+        System.out.println("Before test BookActivityTest");
 
 	    ft = new FileTest();
 	    bookActivities = ft.ReadBookActivity();
@@ -65,7 +68,7 @@ public class BookActivityTest {
 			if (i <= 1) {
 				cmn.scrollToMonth(bookActivities.get(i).getMonth(), andDriver);
 				WebElement selectDay = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\""+bookActivities.get(i).getDate()+"\n"
-						+ "240 N\")"));
+						+ "241 N\")"));
 				selectDay.click();
 				try {
 					WebElement resText = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"));
@@ -134,4 +137,10 @@ public class BookActivityTest {
 		}
 		System.out.println("Finish");
     }
+    
+//    @AfterMethod
+//	public void tearDownTest() {
+//		System.out.println("Quit driver");
+//		andDriver.quit();
+//	}
 }

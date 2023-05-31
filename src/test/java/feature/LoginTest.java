@@ -5,10 +5,13 @@ import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import core.BaseTest;
 import core.Common;
 import core.Connection;
 import io.appium.java_client.android.AndroidDriver;
@@ -18,8 +21,8 @@ import tutorial_appium.AuthClass;
 import tutorial_appium.Login;
 import ultis.FileTest;
 
-@Epic("Login")
-public class LoginTest {
+
+public class LoginTest extends BaseTest {
 	AndroidDriver driver;
 	ArrayList<UserLogin> userLogin;
 	AuthClass ac;
@@ -27,7 +30,7 @@ public class LoginTest {
 	
     @BeforeTest
     public void beforeTest() throws MalformedURLException {
-        System.out.println("Before test");
+        System.out.println("Before test LoginTest");
 
 	    ft = new FileTest();
 		userLogin = ft.Read();//hàm đọc file
@@ -59,4 +62,10 @@ public class LoginTest {
     	}
     }
     
+//    @AfterMethod
+//	public void tearDownTest() {
+//		System.out.println("Quit driver");
+//		driver.quit();
+//	}
+//    
 }
