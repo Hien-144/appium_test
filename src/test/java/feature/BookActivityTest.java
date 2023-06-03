@@ -32,7 +32,7 @@ public class BookActivityTest extends BaseTest {
 	Common cmn;
 	homeTest ht;
 	
-    @BeforeTest
+    @BeforeTest 
     public void beforeTest() throws MalformedURLException, InterruptedException {
         System.out.println("Before test BookActivityTest");
 
