@@ -51,8 +51,9 @@ public class BookOneTest extends BaseTest {
 		brot = new BookRoomOneTest(andDriver);
     }
     
-    @Test
+    @Test(priority = 1)
     public void testBook() throws InterruptedException {
+    	System.out.println("testBook");
 		if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
 			signupKhachsan.click();
@@ -71,20 +72,20 @@ public class BookOneTest extends BaseTest {
 		}
 		for (int i = 0; i < readBooks.size() ; i++) {
 			boolean check = true;
-			boolean res = brot.homeBook(readBooks.get(i), check);
+			boolean res = brot.homeBook(readBooks.get(i), true);
 			System.out.println("Result : " + i + " " + res);
 			if (res) {
 				ft.write(i + 17, 7, "Pass");
 			} else {
 				ft.write(i + 17, 7, "Failed");	
 			}
-			brot.scrollBack("5", cmn);
+			brot.scrollBack("6", cmn);
 			Thread.sleep(500);
 		}
     }
-    
-    @Test
+    @Test(priority = 2)
     public void testPeople() throws InterruptedException {
+    	System.out.println("testPeople");
     	Thread.sleep(5000);
 		if(cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
@@ -194,8 +195,9 @@ public class BookOneTest extends BaseTest {
     }
 
     
-    @Test
+    @Test(priority = 3)
     public void testApply() throws InterruptedException {
+    	System.out.println("testApply");
 		ArrayList<BookRoomOne> bros = new ArrayList<BookRoomOne>();
 		BookRoomOne bookRoomOne = ft.readLine(30);
 		bros.add(bookRoomOne);
@@ -237,8 +239,9 @@ public class BookOneTest extends BaseTest {
     	
     }
   
-    @Test
+    @Test(priority = 4)
     public void testReset() throws InterruptedException {
+    	System.out.println("testReset");
 		BookRoomOne broreset = ft.readLine(29);
     	Thread.sleep(5000);
 		if(!cmn.isElementPresent(By.id("com.tripadvisor.tripadvisor:id/bdlBtnSecondary"))) {

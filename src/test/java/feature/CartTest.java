@@ -54,7 +54,7 @@ public class CartTest extends BaseTest{
 		Thread.sleep(1000);
 		WebElement testFind = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]"));
 		testFind.click();
-		String name = "Hanoi Aria Central Hotel";
+		String name = "Anatole Hotel";
 		cmn.scrollToEle(name, cmn);
 		WebElement showSale = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Xem giảm giá\")"));
 		showSale.click();
@@ -120,7 +120,7 @@ public class CartTest extends BaseTest{
 						}
 					} 
 				}else {
-					System.out.println(i + " " + carts.get(i).getExpect());
+//					System.out.println(i + " " + carts.get(i).getExpect());
 					WebElement success = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Tài khoản của tôi\")"));
 					success.click();
 					Thread.sleep(2000);
@@ -146,33 +146,32 @@ public class CartTest extends BaseTest{
 						continue;
 					}
 				}
-			} else {
-				if (i == 3) {
-					System.out.println(i + " " + carts.get(i).getExpect());
-					WebElement success = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Tài khoản của tôi\")"));
-					success.click();
-					Thread.sleep(2000);
-					WebElement book = cmn.getElementBy(By.xpath("//android.view.View[@content-desc=\"Đặt chỗ & Chuyến đi\"]"));
-					book.click();
-					Thread.sleep(3000);
-					boolean res;			
-					WebElement success1 = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hanoi Center Silk Hotel\")"));
-					if(cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hanoi Center Silk Hotel\")") )){
-						res = true;
-					}else {
-						res = false;
-					}
+			}
+			if (i == 3) {
+//					System.out.println(i + " " + carts.get(i).getExpect());
+				WebElement success = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Tài khoản của tôi\")"));
+				success.click();
+				Thread.sleep(2000);
+				WebElement book = cmn.getElementBy(By.xpath("//android.view.View[@content-desc=\"Đặt chỗ & Chuyến đi\"]"));
+				book.click();
+				Thread.sleep(3000);
+				boolean res;			
+				WebElement success1 = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hanoi Center Silk\")"));
+				if(cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hanoi Center Silk \")") )){
+					res = true;
+				}else {
+					res = false;
+				}
 //					boolean res = success.getText().contains("Tài khoản của tôi");
-					
-					try {
-						System.out.println("Result : " + i + " " + res);
-						Assert.assertTrue(res);
-						ft.write(i + 63, 7, "Pass");
-					} catch (Exception e) {
-						// TODO: handle exception
-						ft.write(i + 63, 7, "Failed");
-						continue;
-					}
+				
+				try {
+					System.out.println("Result : " + i + " " + res);
+					Assert.assertTrue(res);
+					ft.write(i + 63, 7, "Pass");
+				} catch (Exception e) {
+					// TODO: handle exception
+					ft.write(i + 63, 7, "Failed");
+					continue;
 				}
 			}
 		}

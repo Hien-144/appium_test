@@ -171,36 +171,38 @@ public class RateTest extends BaseTest{
 						}
 						
 					}
-					Thread.sleep(2000);
-					if (!cmn.isElementPresent(By.id("com.tripadvisor.tripadvisor:id/edtInput"))) {
-						WebElement rate = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\"Viết đánh giá\")"));
-						rate.click();
+					else {
+						Thread.sleep(2000);
+						if (!cmn.isElementPresent(By.id("com.tripadvisor.tripadvisor:id/edtInput"))) {
+							WebElement rate = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\"Viết đánh giá\")"));
+							rate.click();
+						}
+						WebElement editText = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/edtInput"));
+						editText.sendKeys(rates.get(i).getRated());
+						continueBtn = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hoàn tất\")"));
+						continueBtn.click();
+						Thread.sleep(2000);
+						try {
+							boolean res = false;
+							if (i < 10) {
+								WebElement desc = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/txtDescription"));
+								res = desc.getText().contains(rates.get(i).getExpect());
+								cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnPrimary")).click();
+							} else if (cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().text(\"Viết đánh giá\")"))) {
+								res = true;
+							}
+							System.out.println("Result : " + i + " " + res);
+							Assert.assertTrue(res);
+							ft.write(i + 81, 7, "Pass");
+						} catch (Exception e) {
+							// TODO: handle exception
+							ft.write(i + 81, 7, "Failed");
+							if (i < 10) {
+//								cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnPrimary")).click();
+							}
+							continue;
+						}	
 					}
-					WebElement editText = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/edtInput"));
-					editText.sendKeys(rates.get(i).getRated());
-					continueBtn = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hoàn tất\")"));
-					continueBtn.click();
-					Thread.sleep(2000);
-					try {
-						boolean res = false;
-						if (i < 10) {
-							WebElement desc = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/txtDescription"));
-							res = desc.getText().contains(rates.get(i).getExpect());
-							cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnPrimary")).click();
-						} else if (cmn.isElementPresent(AppiumBy.androidUIAutomator("new UiSelector().text(\"Viết đánh giá\")"))) {
-							res = true;
-						}
-						System.out.println("Result : " + i + " " + res);
-						Assert.assertTrue(res);
-						ft.write(i + 81, 7, "Pass");
-					} catch (Exception e) {
-						// TODO: handle exception
-						ft.write(i + 81, 7, "Failed");
-						if (i < 10) {
-//							cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnPrimary")).click();
-						}
-						continue;
-					}	
 				}
 				else {
 					Thread.sleep(2000);
@@ -235,7 +237,7 @@ public class RateTest extends BaseTest{
 						if (i == 12) {
 							boolean res = editText.getText().equalsIgnoreCase(rates.get(i).getExpect());
 							try {
-								System.out.println("Result : " + i + " " + res);
+								System.out.println("Result : " + i + " " + !res);
 								Assert.assertFalse(res);
 								ft.write(i + 81, 7, "Pass");
 							} catch (Exception e) {

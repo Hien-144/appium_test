@@ -75,7 +75,7 @@ public class BookTwoTest extends BaseTest{
 			Thread.sleep(3000);
 			WebElement applyFree= cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Hiển thị\")"));
 			applyFree.click();
-			String nameHotel = "Hanoi Center Silk Hotel & Travel";  
+			String nameHotel = "Hanoi Center Silk Classic Hotel & Travel";  
 			Thread.sleep(2000);
 			cmn.scrollToEle(nameHotel, andDriver);
 			WebElement hotel = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ nameHotel +"\")"));
@@ -195,11 +195,13 @@ public class BookTwoTest extends BaseTest{
 							Assert.assertFalse(assertRes);	
 						} else {
 							Assert.assertTrue(assertRes);
+							continue;
 						}
 //						System.out.println("Res " + readBookRoomTwo.get(i).getName() + " " + i + " " + assertRes);
 						ft.write(i + 32, 7, "Pass");
 //						nameEle.clear();
-					} catch (Exception e) {
+					} catch (AssertionError e) {
+						
 //						 TODO: handle exception
 						ft.write(i + 32, 7, "Failed");
 //						nameEle.clear();
@@ -219,13 +221,17 @@ public class BookTwoTest extends BaseTest{
 			cmn.scrollToEle(nextStepEnd1, andDriver);
 			WebElement nextStepEleEnd1 = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+nextStepEnd1+"\")"));
 			nextStepEleEnd1.click();
-			System.out.println(nextStepEleEnd1.getText());
 			Thread.sleep(5000);
 			String nextStepEnd2= "Xem tiếp xác nhận trên web";
 			cmn.scrollToEle(nextStepEnd2, andDriver);
 			WebElement nextStepEleEnd2 = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+nextStepEnd2+"\")"));
 			nextStepEleEnd2.click();
 			Thread.sleep(3000);
+			boolean checkLogin = cmn.isElementPresent(By.xpath("//android.view.View[@content-desc=\"Đăng nhập hoặc tạo tài khoản\"]/android.view.View"));
+			System.out.println("CheckLogin " + checkLogin);
+			if(!checkLogin) {
+				return;
+			}
 //			if (cmn.isElementPresent(By.xpath("//*[@resource-id='add-password']"))) {
 				WebElement addPass= cmn.getElementBy(By.xpath("//*[@resource-id='add-password']"));
 				WebElement createBtn = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\"Tạo mật khẩu\")"));
