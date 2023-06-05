@@ -68,7 +68,9 @@ public class BookActivityTest extends BaseTest {
 			if (i <= 1) {
 				cmn.scrollToMonth(bookActivities.get(i).getMonth(), andDriver);
 				WebElement selectDay = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\""+bookActivities.get(i).getDate()+"\n"
-						+ "241 N\")"));
+						+ "241 N\")")); 
+//				WebElement selectDay = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\""+bookActivities.get(i).getDate()+"\n"
+//						+ "241 N\")")); 
 				selectDay.click();
 				try {
 					WebElement resText = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"));
