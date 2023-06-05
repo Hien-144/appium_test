@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
 	AuthClass ac;
 	FileTest ft;
 	
-    @BeforeTest
+    @BeforeMethod
     public void beforeTest() throws MalformedURLException {
         System.out.println("Before test LoginTest");
 
@@ -42,9 +42,8 @@ public class LoginTest extends BaseTest {
 		ac = new AuthClass(driver);
     }
 
-    @Test()
+    @Test
     public void testLogin() throws MalformedURLException, InterruptedException {
-        System.out.println("Test");
     	for (UserLogin userLogin2 : userLogin) {
 			System.out.println(userLogin2.getUsername());
 		}
@@ -60,6 +59,7 @@ public class LoginTest extends BaseTest {
 				ft.write(i + 1, 7, result);
 			}
     	}
+		System.out.println("Finish");
     }
     
 //    @AfterMethod

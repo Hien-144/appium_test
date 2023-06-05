@@ -27,7 +27,7 @@ public class SearchHotelTest extends BaseTest{
 	Common cmn;
 	homeTest ht;
 	
-    @BeforeTest
+    @BeforeMethod
     public void beforeTest() throws MalformedURLException, InterruptedException {
         System.out.println("Before test SearchHotelTest");
 
