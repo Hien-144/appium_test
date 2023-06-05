@@ -303,12 +303,14 @@ public class RateTest extends BaseTest{
 								}
 							}
 							
+							
 						}
 					}
 				}
 			}
 			
 		}
+		System.out.println("Finish");
     }
     
     @AfterClass
