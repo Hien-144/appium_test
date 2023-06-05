@@ -10,39 +10,38 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class Connection {
-	static WebDriver driverMain;
-	static AndroidDriver andDriverMain;
+	static AndroidDriver andDriverMain1;
 	static AndroidDriver driverLaunch;
 	public Connection() {
 		System.out.println("getConnection");
 	}
 
 	public static WebDriver getConnectionMain () throws MalformedURLException, InterruptedException {
-		if (driverMain != null) {
-			return driverMain;
-		}
+//		if (andDriverMain1 != null) {
+//			return andDriverMain1;
+//		}
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		DesiredCapabilities cc = getDesiredCapabilities("com.tripadvisor.android.ui.primarynavcontainer.MainActivity");
-		driverMain = new AndroidDriver(url, cc);
-		driverMain.wait(5000);
-		return driverMain;
+		andDriverMain1 = new AndroidDriver(url, cc);
+		andDriverMain1.wait(5000);
+		return andDriverMain1;
 	}
 	
 	public static AndroidDriver getConnectionMainAndroid () throws MalformedURLException {
-		if (andDriverMain != null) {
-			return andDriverMain;
-		}
+//		if (andDriverMain1 != null) {
+//			return andDriverMain1;
+//		}
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		DesiredCapabilities cc = getDesiredCapabilities("com.tripadvisor.android.ui.primarynavcontainer.MainActivity");
-		andDriverMain = new AndroidDriver(url, cc);
+		andDriverMain1 = new AndroidDriver(url, cc);
 //		andDriverMain.manage().wait(5000).timeouts();
-		return andDriverMain;
+		return andDriverMain1;
 	}
 
 	public static AndroidDriver getConnectionLaunch () throws MalformedURLException {
-		if (driverLaunch != null) {
-			return driverLaunch;
-		}  
+//		if (driverLaunch != null) {
+//			return driverLaunch;
+//		}  
 		DesiredCapabilities cc = getDesiredCapabilities("com.tripadvisor.android.ui.launcher.LauncherActivity");
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		driverLaunch = new AndroidDriver(url, cc);

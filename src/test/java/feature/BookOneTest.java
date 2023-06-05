@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -38,7 +40,7 @@ public class BookOneTest extends BaseTest {
 	ArrayList<BookPeopleOne> bookPeopleOnes;
 	BookRoomOneTest brot;
 	
-    @BeforeTest
+    @BeforeClass
     public void beforeTest() throws MalformedURLException, InterruptedException {
         System.out.println("Before test BookOneTest");
 
@@ -277,11 +279,11 @@ public class BookOneTest extends BaseTest {
 		}
     }
     
-//    @AfterTest
-//	public void tearDownTest() {
-//		System.out.println("Quit driver");
-//		andDriver.quit();
-//	}
+    @AfterClass
+	public void tearDownTest() {
+		System.out.println("Quit driver");
+		andDriver.quit();
+	}
 }
 
 

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -28,7 +30,7 @@ public class HomeSearchTest extends BaseTest{
 	Common cmn;
 	homeTest ht;
 	
-    @BeforeTest
+    @BeforeClass
     public void beforeTest() throws MalformedURLException, InterruptedException {
         System.out.println("Before test HomeSearchTest");
 
@@ -72,10 +74,10 @@ public class HomeSearchTest extends BaseTest{
 		System.out.println("Finish");
     }
     
-//    @AfterMethod
-//	public void tearDownTest() {
-//		System.out.println("Quit driver");
-//		driver.quit();
-//	}
+    @AfterClass
+	public void tearDownTest() {
+		System.out.println("Quit driver");
+		driver.quit();
+	}
 	
 }
