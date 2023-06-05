@@ -3,9 +3,9 @@
 <suite name="Practice Suite">
   <test name="Test 1">
     <classes>
-		<class name="feature.LoginTest"></class>  
 		
-		<!-- 
+		
+		<!-- -->
 		<class name="feature.LoginTest"></class>  
 		<class name="feature.SearchHotelTest"></class>
 		<class name="feature.BookActivityTest"></class>
@@ -14,7 +14,7 @@
 		<class name="feature.CartTest"></class>
 		<class name="feature.HomeSearchTest"></class>
 		<class name="feature.RateTest"></class>
-		 -->
+		 
 		
 	</classes>
 
