@@ -4,13 +4,16 @@
   <test name="Test 1">
     <classes>
 		<!-- 	 -->
+		
+		
+		<class name="feature.RateTest"></class> 
+		
 		<class name="feature.BookOneTest"></class>
 		
 		 		 
 		<class name="feature.BookTwoTest"></class>
 		
 		
-		<class name="feature.RateTest"></class>
 		
 		<class name="feature.CartTest"></class>
 		
