@@ -3,7 +3,7 @@
 <suite name="Practice Suite">
   <test name="Test 1">
     <classes>
-		
+		<!-- 	-->
 		<class name="feature.SearchHotelTest"></class>
 	
 		<class name="feature.LoginTest"></class>  
@@ -12,7 +12,9 @@
 		
 		<class name="feature.HomeSearchTest"></class>
 		
+		
 		 <class name="feature.RateTest"></class>
+		 		 
 		 
 		 <class name="feature.BookOneTest"></class>
 		
