@@ -5,7 +5,7 @@
     <classes>
 		
 		<class name="feature.SearchHotelTest"></class>
-		 <!--
+	
 		<class name="feature.LoginTest"></class>  
 		
 		 <class name="feature.BookActivityTest"></class>
@@ -20,7 +20,7 @@
 		
 		<class name="feature.CartTest"></class>
 		
-		 	-->
+			 <!-- 	-->
 	</classes>
 
   </test> 
