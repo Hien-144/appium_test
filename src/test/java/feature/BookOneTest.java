@@ -19,6 +19,7 @@ import org.testng.annotations.Test;
 import core.BaseTest;
 import core.Common;
 import core.Connection;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import object.BookActivity;
 import object.BookPeopleOne;
@@ -84,6 +85,7 @@ public class BookOneTest extends BaseTest {
 			brot.scrollBack("6", cmn);
 			Thread.sleep(500);
 		}
+		System.out.println("Finish book");
     }
     @Test(priority = 2)
     public void testPeople() throws InterruptedException {
@@ -142,7 +144,7 @@ public class BookOneTest extends BaseTest {
 				}
 				if (!bookPeopleOnes.get(i).getExpectDisable()) {
 					try {
-						System.out.println("Result : " + i + " " + !btnSub.isEnabled());
+//						System.out.println("Result : " + i + " " + !btnSub.isEnabled());
 						Assert.assertFalse(btnSub.isEnabled());
 						ft.write(i + 22, 7, "Pass");
 					} catch (Exception e) {
@@ -186,7 +188,7 @@ public class BookOneTest extends BaseTest {
 						System.out.println("Result : " + i + " " + bookPeopleOnes.get(i).getExpect().contains(actual));
 						Assert.assertTrue(bookPeopleOnes.get(i).getExpect().contains(actual));
 						ft.write(i + 22, 7, "Pass");
-					} catch (Exception e) {
+					} catch (AssertionError e) {
 						// TODO: handle exception
 						ft.write(i + 22, 7, "Faild");
 						continue;
@@ -194,14 +196,16 @@ public class BookOneTest extends BaseTest {
 				}
 			}
 		}
+		System.out.println("Finish people");
     }
 
     
-    @Test(priority = 3)
+    @Test(priority = 4)	
     public void testApply() throws InterruptedException {
     	System.out.println("testApply");
 		ArrayList<BookRoomOne> bros = new ArrayList<BookRoomOne>();
 		BookRoomOne bookRoomOne = ft.readLine(30);
+//		System.out.println(bookRoomOne.getMonthFrom() + bookRoomOne.getMonthTo());
 		bros.add(bookRoomOne);
 		if (!cmn.isElementPresent(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"))) {
 			WebElement signupKhachsan= cmn.getElementBy(By.xpath("//android.widget.Button[@content-desc=\"Khách sạn\"]"));
@@ -218,30 +222,41 @@ public class BookOneTest extends BaseTest {
 				WebElement testFind1 = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"));
 				testFind1.click();	
 			}
+		} else {
+			WebElement text = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"));
+//			System.out.println(text.getText());
+			text.click();
+			Thread.sleep(1000);
+		}	
+		cmn.scrollBack("6", cmn);
+		WebElement reset = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/bdlBtnSecondary"));
+		reset.click();
+
+		for (int i = 0; i < bros.size() ; i++) {
+			boolean res = brot.homeBook(bros.get(i), false);
 		}
-		for (int i = 0; i < readBooks.size() ; i++) {
-			boolean res = brot.homeBook(readBooks.get(i), false);
-		}
-		Thread.sleep(500);
+		Thread.sleep(1000);
 
 		WebElement applyBtn = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/btnPrimary"));
 		applyBtn.click();
 		 
 		WebElement check1 = cmn.getElementBy(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.widget.CompoundButton[2]"));
 		String actual = check1.getText();
+//		System.out.println(actual + "apply");
 		
 		try {
 			System.out.println("Result apply : " + bookRoomOne.getExpect().contains(actual));
 			Assert.assertTrue(bookRoomOne.getExpect().contains(actual));
 			ft.write(30, 7, "Pass");
-		} catch (Exception e) {
+		} catch (AssertionError e) {
 			ft.write(30, 7, "Faild");
 			// TODO: handle exception
 		}
+		System.out.println("Finish apply");
     	
     }
   
-    @Test(priority = 4)
+    @Test(priority = 3)
     public void testReset() throws InterruptedException {
     	System.out.println("testReset");
 		BookRoomOne broreset = ft.readLine(29);
@@ -270,6 +285,7 @@ public class BookOneTest extends BaseTest {
 		actual = text.getText();
 		try {
 			System.out.println("Result reset : " + actual.equalsIgnoreCase(broreset.getExpect()));
+			
 			Assert.assertTrue(actual.equalsIgnoreCase(broreset.getExpect()));
 			ft.write(29, 7, "Pass");
 		} catch (Exception e) {
@@ -277,7 +293,10 @@ public class BookOneTest extends BaseTest {
 			ft.write(29, 7, "Faild");
 			return;
 		}
+		System.out.println("Finish reset");
+		
     }
+    
     
     @AfterClass
 	public void tearDownTest() {

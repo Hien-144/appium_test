@@ -62,7 +62,6 @@ public class CartTest extends BaseTest{
 		showSale.click();
 		Thread.sleep(6000);
 		boolean checkLogin = cmn.isElementPresent(By.xpath("//android.view.View[@content-desc=\"Đăng nhập hoặc tạo tài khoản\"]/android.view.View"));
-		System.out.println("CheckLogin " + checkLogin);
 		if (checkLogin) { // chua login thi bam de login
 			WebElement profileBtn = cmn.getElementBy(By.xpath("//android.view.View[@content-desc=\"Đăng nhập hoặc tạo tài khoản\"]/android.view.View"));
 			profileBtn.click();
@@ -177,6 +176,7 @@ public class CartTest extends BaseTest{
 				}
 			}
 		}
+		System.out.println("Finish");
     }
     @AfterClass
 	public void tearDownTest() {

@@ -87,12 +87,17 @@ public class Common {
 		sequence.addAction(finger.createPointerUp(0));
 		andDriver.perform(Arrays.asList(sequence));
 	}
-	
+
+	public void scrollBack(String month, Common cmn) {
+		while (!cmn.isElementPresentAndroidAndroid(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"tháng " + month + "\")"))) {
+					andDriver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollBackward(15)"));
+				}
+	}	
 
 	public void scrollToMonth(String monthFrom, AndroidDriver andDriver) {
 		while (!this.isElementPresentAndroidAndroid(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"tháng " + monthFrom + "\")")) 
 			&& !this.isElementPresentAndroidAndroid(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"tháng " + (Integer.parseInt(monthFrom) + 1) + "\")"))) {
-				andDriver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollForward(20)"));
+				andDriver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollForward(24)"));
 			}
 		WebElement month = this.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"tháng " + monthFrom + "\")"));
 		if (month != null) {

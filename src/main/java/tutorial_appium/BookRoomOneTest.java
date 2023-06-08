@@ -48,12 +48,12 @@ public class BookRoomOneTest {
 			
 			ts1.click();
 			Thread.sleep(300);
-			System.out.println(check);
+//			System.out.println(check);
 			if (check) {
 				if (cmn.isElementPresent(By.id("com.tripadvisor.tripadvisor:id/txtDescription"))) {
 					WebElement expiration = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/txtTitle"));
 					String actual = expiration.getText();
-					System.out.println(actual + "  ccc");
+//					System.out.println(actual + "  ccc");
 					boolean res = actual.equalsIgnoreCase(bookRoomOne.getExpect());
 					try {
 						Assert.assertTrue(res);
@@ -68,7 +68,7 @@ public class BookRoomOneTest {
 				} else {
 					WebElement result = cmn.getElementBy(By.id("com.tripadvisor.tripadvisor:id/txtStartInputText"));
 					String actual = result.getText();
-					System.out.println(actual);
+//					System.out.println(actual);
 					boolean res = actual.equalsIgnoreCase(bookRoomOne.getExpect());
 					try {
 						Assert.assertTrue(res);
@@ -92,7 +92,7 @@ public class BookRoomOneTest {
 		public void scrollToMonth(String monthFrom, Common cmn) {
 			while (!cmn.isElementPresentAndroidAndroid(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"tháng " + monthFrom + "\")")) 
 				&& !cmn.isElementPresentAndroidAndroid(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"tháng " + (Integer.parseInt(monthFrom) + 1) + "\")"))) {
-					andDriver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollForward(15)"));
+					andDriver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollForward(30)"));
 				}
 			WebElement month = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"tháng " + monthFrom + "\")"));
 			if (month != null) {

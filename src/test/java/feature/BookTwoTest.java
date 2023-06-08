@@ -83,6 +83,7 @@ public class BookTwoTest extends BaseTest{
 			WebElement hotel = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\""+ nameHotel +"\")"));
 			hotel.click();
 			Thread.sleep(500);
+			cmn.scrollToEleText("Đặt phòng cho đêm nay", andDriver);
 			WebElement bookRoom1 = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Đặt phòng cho đêm nay\")"));
 //			System.out.println(bookRoom1.getText());
 			bookRoom1.click();
@@ -106,7 +107,7 @@ public class BookTwoTest extends BaseTest{
 			boolean assertRes = false;
 			WebElement outClickElement; 
 			WebElement focusElement; 
-//			System.out.println("Sout res : " + assertRes);
+			System.out.println("Sout res : " + assertRes);
 			for(int i = 0; i < readBookRoomTwo.size(); i++) {
 //					System.out.println(test.getText());
 				if (i >= 5 && i <= 9) { // lastname 
@@ -197,7 +198,6 @@ public class BookTwoTest extends BaseTest{
 							Assert.assertFalse(assertRes);	
 						} else {
 							Assert.assertTrue(assertRes);
-							continue;
 						}
 //						System.out.println("Res " + readBookRoomTwo.get(i).getName() + " " + i + " " + assertRes);
 						ft.write(i + 32, 7, "Pass");
@@ -230,10 +230,7 @@ public class BookTwoTest extends BaseTest{
 			nextStepEleEnd2.click();
 			Thread.sleep(3000);
 			boolean checkLogin = cmn.isElementPresent(By.xpath("//android.view.View[@content-desc=\"Đăng nhập hoặc tạo tài khoản\"]/android.view.View"));
-			System.out.println("CheckLogin " + checkLogin);
-			if(!checkLogin) {
-				return;
-			}
+//			 
 //			if (cmn.isElementPresent(By.xpath("//*[@resource-id='add-password']"))) {
 				WebElement addPass= cmn.getElementBy(By.xpath("//*[@resource-id='add-password']"));
 				WebElement createBtn = cmn.getElementBy(AppiumBy.androidUIAutomator("new UiSelector().text(\"Tạo mật khẩu\")"));
@@ -256,7 +253,7 @@ public class BookTwoTest extends BaseTest{
 							}
 						}
 						try {
-//							System.out.println("Result : " + i + " " + res);
+							System.out.println("Result : " + i + " " + res);
 							Assert.assertTrue(res);
 							ft.write(i + 32, 7, "Pass");
 						} catch (Exception e) {
@@ -266,6 +263,7 @@ public class BookTwoTest extends BaseTest{
 						
 					}
 				}
+				System.out.println("Finish");
 //			}
 			Thread.sleep(1000);
 		}
