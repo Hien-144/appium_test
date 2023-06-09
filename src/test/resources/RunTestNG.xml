@@ -3,7 +3,6 @@
 <suite name="Practice Suite">
   <test name="Test 1">
     <classes>
-		
 		<class name="feature.RateTest"></class> 
 			
 		<class name="feature.BookOneTest"></class>
