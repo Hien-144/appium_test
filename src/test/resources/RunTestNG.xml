@@ -23,8 +23,7 @@
 		
 		<class name="feature.HomeSearchTest"></class>
 		
-	 
-			<!--  	-->
+	 			<!--  	-->
 	</classes>
 
   </test> 
