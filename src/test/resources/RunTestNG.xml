@@ -7,11 +7,12 @@
 		
 		<class name="feature.LoginTest"></class>  
 		
-		 <class name="feature.BookActivityTest"></class>
 		
 		<class name="feature.HomeSearchTest"></class>
+		<!-- 
+		 <class name="feature.BookActivityTest"></class>
 		
-		<!--
+			
 		<class name="feature.RateTest"></class> 
 		
 		<class name="feature.BookOneTest"></class>
@@ -24,7 +25,7 @@
 	
 		<class name="feature.SearchHotelTest"></class>
 	
-		  -->	
+			 -->	
 	 <!--  	-->				
 	</classes>
 
